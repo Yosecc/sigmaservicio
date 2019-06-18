@@ -1,0 +1,32 @@
+before_script:
+  - apt-get update -qq
+  - apt-get install -qq git dos2unix
+  - echo $SSH_PRIVATE_KEY >> ~/tifyca_webserver64.pem
+  - cat ~/tifyca_webserver64.pem |base64 -d > ~/tifyca_webserver.pem
+  - chmod 400 ~/tifyca_webserver.pem
+  - mkdir ~/.ssh
+  - ls ~/ -al
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - cat ~/.ssh/config
+  - echo $CI_COMMIT_REF_NAME
+test:
+  stage: test
+  script:
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "cd /var/www/dsigmaservicio/ && sudo chown root.root * -R && exit "
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "cd /var/www/dsigmaservicio/ && sudo git checkout $CI_COMMIT_REF_NAME && sudo git pull origin develop && exit"
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "cd /var/www/dsigmaservicio/ && sudo composer update && sudo composer install && exit"
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "sudo chown www-data.www-data /var/www/dsigmaservicio  -R && exit"
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "cd /var/www/dsigmaservicio/ && sudo chown www-data.www-data .* -R && sudo chmod 777 /var/www/dsigmaservicio/storage -R && exit"
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "sudo aws s3 cp s3://tifyca-config/sigmaservicio/env_dev.txt /var/www/dsigmaservicio/.env && exit"
+   - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE_DEV "sudo chown www-data.www-data /var/www/dsigmaservicio/.env && exit"
+  only:
+   - develop
+deploy_staging:
+  type: deploy
+  environment:
+    name: master
+    url: www.sigmaservicio.es
+  script:
+    - ssh -i ~/tifyca_webserver.pem ubuntu@$IP_REMOTE "cd /var/www/psigmaservicio/ && sudo chown root.root * -R && sudo git checkout $CI_COMMIT_REF_NAME && sudo git pull origin master && sudo aws s3 cp s3://tifyca-config/sigmaservicio/env_pro.txt .env && sudo composer update && sudo composer install && sudo chown www-data.www-data /var/www/psigmaservicio -R && sudo chown www-data.www-data .* -R && sudo chmod 777 storage -R && exit"
+  only:
+    - master
