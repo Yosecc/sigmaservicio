@@ -1,0 +1,19 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+/public/.sass-cache
+npm-debug.log
+yarn-error.log
+config/database.php
+.env
+composer.lock
+composer.json
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+conexpar_backend.sublime-workspace
