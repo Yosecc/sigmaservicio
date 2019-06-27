@@ -1,13 +1,23 @@
 @extends ('Frontend.layouts.layout')
 
-@section('content')
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-@endsection
+	@section('content')
+
+		<!-- Hero Slider -->	
+		@include('Frontend.template.home')		
+		<!-- Features -->
+		@include('Frontend.template.features')
+		<!-- About -->
+		@include('Frontend.template.about')	
+		<!-- Testimonials -->
+		@include('Frontend.template.testimonials')	
+		<!-- Services -->
+		@include('Frontend.template.services')	
+		<!-- Clients -->
+		@include('Frontend.template.clients')	
+		<!-- Contact -->
+		@include('Frontend.template.contacts')	
+
+	@endsection
 @push('scripts')
 
 @endpush
