@@ -1,164 +1,215 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Slider as Slider;
-use App\Servicios as Servicios;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use App\Sliders;
 
 class SliderController extends Controller
 {
-      public function create(Request $request)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-      //dd($request->all()); 
-      $titulo= $request["titulo"];
-      $contenido= $request["contenido"];
-      if($request["publico"]){
-          $publico= "1";
-      }
-      else {
-        $publico = "0";
-      }
-      $posiciones_registradas = Slider::select('id','posicion')
-                                        ->where('posicion',$request["posicion"])
-                                      ->first();
-      if ($posiciones_registradas) {
-        $posiciones_registradas = Slider::select('id','posicion')
-                                        ->get();
-        foreach ($posiciones_registradas as $valor) {
-            if($valor->posicion > $request["posicion"]-1){
-              Slider::where('id',$valor->id)
-                    ->update(['posicion'=>$valor->posicion+1]);
+         $sliders =  Sliders::all(); 
+     
+         return view('Backend.slider.index', ['sliders'=> $sliders]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('Backend.slider.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $existe = Sliders::where('posicion', $request->posicion)->get();
+        $sliders =  Sliders::all();
+        $slidercreate =  new Sliders;
+    
+        $archivo_nombre =Str::slug($request->titulo, '-');
+    	$archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
+        $slidercreate->titulo = $request->titulo;
+        $slidercreate->texto = $request->texto;
+        $slidercreate->posicion = $request->posicion;
+        
+        if ($request->hasFile('imagen')) {
+            $img = Storage::putFileAs('public/slider/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
+            $slidercreate->imagen = $img;
+        }
+        $slidercreate->publico = isset($request->publico) ? 1 : 0;
+       
+        if(count($existe)){
+            foreach ($sliders as $slider) {
+                if( $slider->posicion == $request->posicion){
+                    $this->editPosicion($slider->id);
+                }
+                
+            }
+           
+           
+        }
+        else {
+            if(count($sliders) < $request->posicion)
+            $slidercreate->posicion = count($sliders)+1;
+        }
+       
+        $slidercreate->save();
+
+        $update=Sliders::find($slidercreate->id);
+        $update->posicion =$request->posicion;
+        $update->save();
+        $this->validateRepetido($slidercreate->id);
+        return redirect()->route('admin.slider.index');
+
+    }
+
+    public function editPosicion($id)
+    {
+        $sliders =  Sliders::find($id);
+        $sliders->posicion = $sliders->posicion+1;
+        $sliders->save();
+
+    }
+
+    
+    public function validateRepetido($id)
+    {
+        $all =  Sliders::all();
+        foreach ($all as $item) {
+            if(count(Sliders::where('posicion', $item->posicion)->get()) == 2){
+                if($item->id != $id){
+                $slider =  Sliders::find($item->id);
+                 $slider->posicion = $slider->posicion+1;
+                    }    
+                $slider->save();
+            }
             }
         }
+        
 
-      }
-      $sliders = new Slider;
-      $sliders->fill($request->input());
-      $sliders->publico=$publico;
-      $sliders->role_user_id = Auth::id();
-      $nombreArchivo = "img_slider";
-      $archivo_img = $nombreArchivo."_".time().'.'.$request["url_imagen"]->getClientOriginalExtension();
-              $path = public_path().'/images/sliders/';
-              $request["url_imagen"]->move($path, $archivo_img);
-      $sliders->url_imagen=$archivo_img;
-      $sliders->save();
+    
 
-      return redirect()->route("versliders");
-
-    }
-    public function list()
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-         $sliders = DB::table('sliders')
-                        ->select(DB::raw('id,titulo,  IF (publico = "1", "Si", "No") as publico, posicion,  created_at'))
-                        ->orderBy('posicion')
-                        ->get();
-
-         return view('Backend.slider',['sliders'=>$sliders]);
+        $slider =  Sliders::find($id);
+        return view('Backend.slider.show', ['slider'=> $slider]);
     }
-    public function onesearch($id)
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $slider = DB::table('sliders')
-                  ->where('id', $id)
-                  ->first();
-
-        if (!$slider){
-          return view('Backend.index');
-        }
-        else{
-          $posiciones_registradas = Slider::select('posicion')
-                                          ->orderBy('posicion')
-                                          ->get();
-          foreach ($posiciones_registradas as $key => $value) {
-            $posiciones_disponibles[$key]=$value->posicion;
-          }
-          $slider = DB::table('sliders')
-                         ->select(DB::raw('id, titulo, publico,contenido, contenido2, posicion, url_imagen,  created_at'))
-                         ->where('id', $id)
-                         ->first();
-
-          return view('Backend.form.formsliderupdate',['slider'=>$slider,'posiciones_disponibles'=>$posiciones_disponibles]);
-        }
-
+        $slider =  Sliders::find($id);
+        return view('Backend.slider.edit', ['slider'=> $slider]);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
-      // dd($request);
-      $slider = DB::table('sliders')
-                ->where('id', $id)
-                ->first();
-
-      if (!$slider){
-        return view('Backend.index');
-      }
-      else{
-        $id_posicion = Slider::select('id','posicion')
-                                          ->where('id',$id)
-                                        ->first();
-        if ($id_posicion->posicion!=$request["posicion"]) {
-          $posiciones_registradas = Slider::select('id','posicion')
-                                          ->get();
-          foreach ($posiciones_registradas as $valor) {
-              if($valor->posicion != $id_posicion->posicion){
-                if ($valor->posicion <= $request["posicion"] && $valor->posicion > $id_posicion->posicion) {
-                  Slider::where('id',$valor->id)
-                        ->update(['posicion'=>$valor->posicion-1]);
-                }
-                else {
-                  if($valor->posicion >= $request["posicion"] && $valor->posicion < $id_posicion->posicion){
-                    Slider::where('id',$valor->id)
-                          ->update(['posicion'=>$valor->posicion+1]);
-                  }
-                }
-
-              }
-          }
-
+        $sliders =  Sliders::all();
+        $slidercreate = Sliders::find($id);
+        $idCompare= Sliders::where('posicion',$request->posicion)->get();
+        $flag_posicion= $slidercreate->posicion;
+        $archivo_nombre =Str::slug($request->titulo, '-');
+    	$archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
+        $slidercreate->titulo = $request->titulo;
+        $slidercreate->texto = $request->texto;
+        $slidercreate->posicion = $request->posicion;
+        if ($request->hasFile('imagen')) {
+            $img = Storage::putFileAs('public/slider/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
+            $slidercreate->imagen = $img;
         }
-            $slider = Slider::find($id)
-                      ->fill($request->input());
-            if($request->hasFile('url_imagen')){
-              $nombreArchivo = "img_slider";
-              $archivo_img = $nombreArchivo."_".time().'.'.$request["url_imagen"]->getClientOriginalExtension();
-                      $path = public_path().'/images/sliders/';
-                      $request["url_imagen"]->move($path, $archivo_img);
-              $slider->url_imagen = $archivo_img;
-            }
-            if($request["publico"]){
-                $slider->publico= "1";
-            }
-            else {
-              $slider->publico = "0";
-            }
-            $slider->role_user_id = Auth::id();
-            $slider->save()
-            ;
-          return redirect()->route("versliders");
-       }
+        $slidercreate->publico = isset($request->publico) ? 1 : 0;
+        if(count($sliders) < $request->posicion)
+        $slidercreate->posicion = count($sliders)+1;
+        $slidercreate->save();
+   
+        $sliders =  Sliders::all();
+        if( $flag_posicion < $request->posicion  ){
+                $update=Sliders::find($idCompare[0]->id);
+                $update->posicion =$request->posicion-2;
+                $update->save();
+                
+                
+        }
+            foreach ($sliders as $slider) {
+                    if(  $slider->posicion ==  $slidercreate->posicion){
+                        $this->editToUpdatePosicion($slider->id);   
+                        } 
+                    }
+                            
+            
+
+       
+        $update=Sliders::find($id);
+        $update->posicion =$request->posicion;
+        $update->save();
+        $this->validateRepetido($id);
+        return redirect()->route('admin.slider.index');
+
     }
-    public function delete($id)
+
+    public function editToUpdatePosicion($id)
     {
-        DB::table('sliders')->where('id', $id)->delete();
+        $sliders =  Sliders::find($id);
+        $sliders->posicion =  $sliders->posicion+1;
+        $sliders->save();
 
-        return redirect()->route("versliders");
     }
-    public function form()
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-      $posiciones_registradas = Slider::select('posicion')
-                                      ->orderBy('posicion')
-                                      ->get();
-      foreach ($posiciones_registradas as $key => $value) {
-        $posiciones_disponibles[$key]=$value->posicion;
-      }
-      $posiciones_disponibles[count($posiciones_registradas)]=count($posiciones_registradas)+1;
-
-
-        return view('Backend.form.formslider',['posiciones_disponibles'=>$posiciones_disponibles]);
+        $slider =  Sliders::find($id);
+        $sliders =  Sliders::all();
+        foreach ($sliders as $item) {
+            if(  $item->posicion >= $slider->posicion )
+               { 
+                $update = Sliders::find($item->id);
+                $update->posicion =  $update->posicion-1;
+                $update->save();
+                }
+            }
+            $slider->delete();
+        return redirect()->route('admin.slider.index');
     }
-
-
 }

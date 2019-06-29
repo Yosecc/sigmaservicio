@@ -78,6 +78,49 @@ Route::namespace('Backend')->middleware(['middleware' => 'auth'])->group(functio
 /*Rutas privadas solo para usuarios autenticados*/
 Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
 {
+  //slider
+  Route::name('admin.slider.')->prefix('/slider')->group(function () {
+    Route::get('index', 'Backend\SliderController@index')->name('index');
+    Route::get('create', 'Backend\SliderController@create')->name('create');
+    Route::get('edit/{id}', 'Backend\SliderController@edit')->name('edit');
+    Route::post('delete/{id}', 'Backend\SliderController@destroy')->name('destroy');
+    Route::get('show/{id}', 'Backend\SliderController@show')->name('show');
+    Route::post('store', 'Backend\SliderController@store')->name('store');
+    Route::post('update/{id}', 'Backend\SliderController@update')->name('update');
+  });
+
+   //categoria
+   Route::name('admin.categoria.')->prefix('/categoria')->group(function () {
+    Route::get('index', 'Backend\CategoriasController@index')->name('index');
+    Route::get('create', 'Backend\CategoriasController@create')->name('create');
+    Route::get('edit/{id}', 'Backend\CategoriasController@edit')->name('edit');
+    Route::post('delete/{id}', 'Backend\CategoriasController@destroy')->name('destroy');
+    Route::get('show/{id}', 'Backend\CategoriasController@show')->name('show');
+    Route::post('store', 'Backend\CategoriasController@store')->name('store');
+    Route::post('update/{id}', 'Backend\CategoriasController@update')->name('update');
+  });
+
+   //marca
+   Route::name('admin.marca.')->prefix('/marca')->group(function () {
+    Route::get('index', 'Backend\MarcaController@index')->name('index');
+    Route::get('create', 'Backend\MarcaController@create')->name('create');
+    Route::get('edit/{id}', 'Backend\MarcaController@edit')->name('edit');
+    Route::post('delete/{id}', 'Backend\MarcaController@destroy')->name('destroy');
+    Route::get('show/{id}', 'Backend\MarcaController@show')->name('show');
+    Route::post('store', 'Backend\MarcaController@store')->name('store');
+    Route::post('update/{id}', 'Backend\MarcaController@update')->name('update');
+  });
+
+   //servicio
+   Route::name('admin.servicio.')->prefix('/servicio')->group(function () {
+    Route::get('index', 'Backend\CategoriasController@index')->name('index');
+    Route::get('create', 'Backend\CategoriasController@create')->name('create');
+    Route::get('edit/{id}', 'Backend\CategoriasController@edit')->name('edit');
+    Route::post('delete/{id}', 'Backend\CategoriasController@destroy')->name('destroy');
+    Route::get('show/{id}', 'Backend\CategoriasController@show')->name('show');
+    Route::post('store', 'Backend\CategoriasController@store')->name('store');
+    Route::post('update/{id}', 'Backend\CategoriasController@update')->name('update');
+  });
   //*************** NEWSLETTER**************************************************************
   //Listar registros de newsletter
   Route::get('newsletter', ['as' => 'vernewsletter', 'uses'=>'Backend\NewsLetterController@store']);
@@ -87,7 +130,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
 
   //*************** SLIDERSSSSSSS**************************************************************
   //Listar registros de sliders
-  Route::get('slider', ['as' => 'versliders', 'uses'=>'Backend\SliderController@list']);
+ /* Route::get('slider', ['as' => 'versliders', 'uses'=>'Backend\SliderController@list']);
   //Agregar registros de Sliders
   Route::post('nuevoslider', ['as' => 'ingresarslider', 'uses'=>'Backend\SliderController@create']);
   //Buscar Slider ya registrado
@@ -97,7 +140,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
   //Mostrar formulario de Sliders
   Route::get('nuevoslider', ['as' => 'formslider', 'uses'=>'Backend\SliderController@form']);
   //Eliminar registros de Sliders
-  Route::get('slider/r{id}', ['as' => 'eliminarslider', 'uses'=>'Backend\SliderController@delete']);
+  Route::get('slider/r{id}', ['as' => 'eliminarslider', 'uses'=>'Backend\SliderController@delete']);*/
   //********************************** FIN SLIDERSS*************************************************
 
   //*************************NOTIICIASSSS***********************************
@@ -116,7 +159,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
   //************************* FIN NOTIICIASSSS***********************************
 
 //*********************** SERVICIOSSSSSSSSSS****************************************
-
+/*
   Route::get('servicios/indexx', 'Backend\ServiciosController@index')->name('servicios.index');
   Route::get('servicios/create', 'Backend\ServiciosController@create')->name('servicios.create');
   Route::post('servicios/store', 'Backend\ServiciosController@store')->name('servicios.store');
@@ -129,7 +172,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
               'uses'=>'Backend\ServiciosController@destroy'
             ]);
   Route::post('servicios/update', 'Backend\ServiciosController@update')->name('servicios.update');
-
+*/
   //Listar registros de Servicios
   //Route::get('servicios', ['as' => 'verservicios', 'uses'=>'Backend\ServiciosController@index']);
   //Listar registros de Servicios
@@ -162,7 +205,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
 
   //********************** FIN CAMPOS ****************************************
 
-  //********************** CATEGORIAS ****************************************
+ /* //********************** CATEGORIAS ****************************************
   //Agregar registro de Categorias
   Route::post('categorias', ['as' => 'ingresarcategoria', 'uses'=>'Backend\CategoriasController@store']);
   //Buscar Campo ya registrado
@@ -175,7 +218,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
   Route::get('categorias/r{categorias}', ['as' => 'eliminarcategoria', 'uses'=>'Backend\CategoriasController@destroy']);
 
   //********************** FIN CATEGORIAS ****************************************
-
+*/
   //********************** SECCIONES ****************************************
   //Agregar registro de Secciones
   Route::post('secciones', ['as' => 'ingresarseccion', 'uses'=>'Backend\SeccionesController@create']);
