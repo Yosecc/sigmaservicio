@@ -1,0 +1,54 @@
+.card-header, .sidebar[data-color="purple"] li.active > a{
+      box-shadow: none !important;
+    }
+
+    .dark-edition .form-control, .is-focused .dark-edition .form-control{
+    	background-image: linear-gradient(to top, #c20f0f 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, rgba(180, 180, 180, 0.1) 1px, rgba(180, 180, 180, 0) 1px) !important;
+    }
+    .dark-edition .form-group label, .dark-edition .form-control{
+    	color: black !important;
+    }
+
+    .form-control{
+    	border-bottom: 1px solid silver !important;
+    }
+
+    .thumbnail img{
+    	width: 100% !important;
+    }
+
+.card [class*="card-header-"] .card-title, .card [class*="card-header-"] .card-title + .card-category,.dark-edition .btn.btn-white.btn-link, .sidebar[data-background-color="black"] .nav .active .nav-link{
+    color:black !important;
+   
+}
+
+.sidebar[data-background-color="black"] .nav .active i{
+     color:black !important;
+}
+
+.card-header{
+    box-shadow: 1px 1px 5px grey !important;
+}
+.dark-edition{
+    padding-top: 0px !important;
+}
+
+.btn-primary, .page-item.active .page-link{
+    background-color: #E54E2A !important;
+}
+
+.text-black {
+    color: black !important;
+}
+
+.nav-tabs .nav-link.active:hover, .nav-tabs .nav-link.active:focus, .nav-tabs .nav-link.active{
+    border-color:  #E54E2A !important;
+}
+
+.dark-edition .form-control::placeholder{
+    color: black !important;
+}
+
+.page-link{
+    background-color: silver !important;
+}

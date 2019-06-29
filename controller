@@ -1,0 +1,6 @@
+
+In StreamHandler.php line 107:
+                                                                                                                                                                 
+  The stream or file "/Applications/XAMPP/xamppfiles/htdocs/consultoria/storage/logs/laravel.log" could not be opened: failed to open stream: Permission denied  
+                                                                                                                                                                 
+
