@@ -15,20 +15,13 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titulo');
+            $table->string('imagen');
+            $table->string('texto');
+            $table->integer('publico');
+            $table->integer('posicion');
             $table->timestamps();
-            $table->longText('titulo');
-            $table->longText('contenido');
-            $table->longText('contenido2')->nullable();
-            $table->boolean('publico');
-            $table->bigInteger('posicion');
-            $table->longText('url_imagen');
-            $table->integer('servicio_id')->nullable();
-            $table->integer('role_user_id')->unsigned();
-
         });
-        Schema::table('sliders', function($table) {
-              $table->foreign('role_user_id')->references('id')->on('role_user');
-          });
     }
 
     /**

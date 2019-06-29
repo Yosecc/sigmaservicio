@@ -2,9 +2,32 @@
   <ul class="nav">
 
     <li id="slider" class="nav-item">
-      <a class="nav-link" href="{{ route('versliders')}}">
+      <a class="nav-link" href="{{ route('admin.slider.index')}}">
         <i class="material-icons">view_carousel</i>
         <p>Slider</p>
+      </a>
+    </li>
+
+    
+    <li id="slider" class="nav-item">
+      <a class="nav-link" href="{{ route('admin.categoria.index')}}">
+        <i class="material-icons">view_carousel</i>
+        <p>Categoria</p>
+      </a>
+    </li>
+
+    
+    <li id="slider" class="nav-item">
+      <a class="nav-link" href="{{ route('admin.marca.index')}}">
+        <i class="material-icons">view_carousel</i>
+        <p>Marcas</p>
+      </a>
+    </li>
+
+    <li id="slider" class="nav-item">
+      <a class="nav-link" href="{{ route('admin.servicio.index')}}">
+        <i class="material-icons">view_carousel</i>
+        <p>Servicios</p>
       </a>
     </li>
 
