@@ -113,13 +113,13 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
 
    //servicio
    Route::name('admin.servicio.')->prefix('/servicio')->group(function () {
-    Route::get('index', 'Backend\CategoriasController@index')->name('index');
-    Route::get('create', 'Backend\CategoriasController@create')->name('create');
-    Route::get('edit/{id}', 'Backend\CategoriasController@edit')->name('edit');
-    Route::post('delete/{id}', 'Backend\CategoriasController@destroy')->name('destroy');
-    Route::get('show/{id}', 'Backend\CategoriasController@show')->name('show');
-    Route::post('store', 'Backend\CategoriasController@store')->name('store');
-    Route::post('update/{id}', 'Backend\CategoriasController@update')->name('update');
+    Route::get('index', 'Backend\ServiciosController@index')->name('index');
+    Route::get('create', 'Backend\ServiciosController@create')->name('create');
+    Route::get('edit/{id}', 'Backend\ServiciosController@edit')->name('edit');
+    Route::post('delete/{id}', 'Backend\ServiciosController@destroy')->name('destroy');
+    Route::get('show/{id}', 'Backend\ServiciosController@show')->name('show');
+    Route::post('store', 'Backend\ServiciosController@store')->name('store');
+    Route::post('update/{id}', 'Backend\ServiciosController@update')->name('update');
   });
   //*************** NEWSLETTER**************************************************************
   //Listar registros de newsletter

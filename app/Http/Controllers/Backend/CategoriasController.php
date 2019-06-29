@@ -9,6 +9,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use App\Categorias;
+use App\Servicios;
 
 class CategoriasController extends Controller
 {
@@ -188,7 +189,12 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
+       
         $categoria =  Categorias::find($id);
+        foreach ($categoria->servicio as $servicio) {
+            $this->deleteServicio($servicio->id);
+        }
+
         $categorias =  Categorias::all();
         foreach ($categorias as $item) {
             if(  $item->posicion >= $categoria->posicion )
@@ -200,5 +206,21 @@ class CategoriasController extends Controller
             }
         $categoria->delete();
         return redirect()->route('admin.categoria.index');
+    }
+
+    public function deleteServicio($id)
+    {
+        $servicio =  Servicios::find($id);
+        $Servicios =  Servicios::all();
+        foreach ($Servicios as $item) {
+            if(  $item->posicion >= $servicio->posicion )
+               { 
+                $update = Servicios::find($item->id);
+                $update->posicion =  $update->posicion-1;
+                $update->save();
+                }
+            }
+            $servicio->delete();
+      
     }
 }

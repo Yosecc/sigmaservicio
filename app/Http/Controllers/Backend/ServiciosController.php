@@ -2,124 +2,218 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use App\Tours;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use App\Categorias;
+use App\Servicios;
 
 class ServiciosController extends Controller
 {
-  public function index(){
-    $tours = Tours::orderBy('posicion', 'DESC')->get();
-    return view('Backend.servicios.index', compact('tours'));
-  }
-  public function store(Request $request){
-      //dd($request->all());
+      /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+         $servicios =  Servicios::all(); 
+     
+         return view('Backend.servicio.index', ['servicios'=> $servicios]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
       
-      $orden = Tours::where('posicion', $request->posicion)->first();
+        return view('Backend.servicio.create');
+    }
 
-      if ($orden) {
-        $orden = Tours::all();
-        foreach ($orden as $value) {
-          if ($value->posicion > $request->posicion - 1) {
-            $actualiza = Tours::where('id', $value->id)->update(['posicion'=>$value->id+1]);
-          }
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $existe = Servicios::where('posicion', $request->posicion)->get();
+        $Servicios =  Servicios::all();
+        $serviciocreate =  new Servicios;
+    
+        $archivo_nombre =Str::slug($request->nombre, '-');
+    	  $archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
+        $serviciocreate->nombre = $request->nombre;
+        $serviciocreate->categorias_id = $request->categorias_id;
+        $serviciocreate->texto = $request->texto;
+        $serviciocreate->posicion = $request->posicion;
+        
+        if ($request->hasFile('imagen')) {
+            $img = Storage::putFileAs('public/servicio/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
+            $serviciocreate->imagen = $img;
         }
-      }
-
-      $guardar = new Tours;
-      $guardar->nombre   = $request->titulo;
-      $guardar->descripcion   = $request->descripcion;
-      $guardar->fechaDesde   = $request->fechaDesde;
-      $guardar->fechaHasta   = $request->fechaHasta;
-      $guardar->horarioDesde   = $request->horarioDesde;
-      $guardar->horarioHasta   = $request->horarioHasta;
-      $guardar->sitio   = $request->sitio;
-      if($request->hasFile('url_imagen')){
-        $nombreArchivo = "img_tour";
-        $archivo_img = $nombreArchivo."_".time().'.'.$request["url_imagen"]->getClientOriginalExtension();
-                $path = public_path().'/images/servicios/';
-                $request["url_imagen"]->move($path, $archivo_img);
-        $guardar->img = $archivo_img;
-      }
-      $guardar->estado = $request->estado;
-      $guardar->posicion = $request->posicion;
-      $guardar->user = Auth::id();
-      $guardar->save();
-
-
-
-      if (count($guardar) == 1) {
-        $mensaje = 'Registro guardado';
-      }
-    return redirect()->route('servicios.index')->with('mensaje', $mensaje);
-
-  }
-  public function create(){
-
-    $posicion = Tours::orderBy('posicion','desc')->get();
-    
-    return view('Backend.servicios.create', compact('posicion'));
-  }
-
-  public function edit(Request $request ){
-    $tour = Tours::where('id', $request['id'])->first();
-    $posicion = Tours::orderBy('posicion','desc')->get();
-    
-    return view('Backend.servicios.edit', compact('posicion','tour'));
-  }
-
-  public function update(Request $request){
-    $orden = Tours::where('posicion', $request->posicion)->first();
-
-      if ($orden) {
-        $orden = Tours::all();
-        foreach ($orden as $value) {
-          if ($value->posicion > $request->posicion - 1) {
-            $actualiza = Tours::where('id', $value->id)->update(['posicion'=>$value->id+1]);
-          }
+        $serviciocreate->publico = isset($request->publico) ? 1 : 0;
+       
+        if(count($existe)){
+            foreach ($Servicios as $servicio) {
+                if( $servicio->posicion == $request->posicion){
+                    $this->editPosicion($servicio->id);
+                }
+                
+            }
+           
+           
         }
-      }
+        else {
+            if(count($Servicios) < $request->posicion)
+            $serviciocreate->posicion = count($Servicios)+1;
+        }
+       
+        $serviciocreate->save();
 
-      if($request->hasFile('url_imagen')){
-        $nombreArchivo = "img_tour";
-        $archivo_img = $nombreArchivo."_".time().'.'.$request["url_imagen"]->getClientOriginalExtension();
-                $path = public_path().'/images/servicios/';
-                $request["url_imagen"]->move($path, $archivo_img);
+        $update=Servicios::find($serviciocreate->id);
+        $update->posicion =$request->posicion;
+        $update->save();
+        $this->validateRepetido($serviciocreate->id);
+        return redirect()->route('admin.servicio.index');
 
-        $actualizaIMG = Tours::where('id', $request->id)->update(['img'=>$archivo_img,]);
+    }
 
-                                                             
-                                                            
-                                                            
-      }
+    public function editPosicion($id)
+    {
+        $Servicios =  Servicios::find($id);
+        $Servicios->posicion = $Servicios->posicion+1;
+        $Servicios->save();
 
-    $actualiza = Tours::where('id', $request->id)->update([ 'nombre'=>$request->titulo,
-                                                            'descripcion'=>$request->descripcion,
-                                                            'fechaDesde'=>$request->fechaDesde,
-                                                            'fechaHasta'=>$request->fechaHasta,
-                                                            'horarioDesde'=>$request->horarioDesde,
-                                                            'horarioHasta'=>$request->horarioHasta,
-                                                            'sitio'=>$request->sitio,
-                                                            'estado'=>$request->estado,
-                                                            'posicion'=>$request->posicion,
-                                                            'user'=>Auth::id()]);
+    }
 
-     if ($actualiza) {
-        $mensaje = 'Registro Actualizado';
-      }
-    return redirect()->route('servicios.index')->with('mensaje', $mensaje);
-
-  }
-
-  public function destroy(Request $request){
-    $delete = Tours::where('id',$request->id )->delete();
     
-    if ($delete) {
-        $mensaje = 'Registro Eliminado';
-      }
-    return redirect()->route('servicios.index')->with('mensaje', $mensaje);
-  }
+    public function validateRepetido($id)
+    {
+        $all =  Servicios::all();
+        foreach ($all as $item) {
+            if(count(Servicios::where('posicion', $item->posicion)->get()) == 2){
+                if($item->id != $id){
+                $servicio =  Servicios::find($item->id);
+                 $servicio->posicion = $servicio->posicion+1;
+                    }    
+                $servicio->save();
+            }
+            }
+        }
+        
+
+    
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $servicio =  Servicios::find($id);
+        return view('Backend.servicio.show', ['servicio'=> $servicio]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $servicio =  Servicios::find($id);
+        return view('Backend.servicio.edit', ['servicio'=> $servicio]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $Servicios =  Servicios::all();
+        $serviciocreate = Servicios::find($id);
+        $idCompare= Servicios::where('posicion',$request->posicion)->get();
+        $flag_posicion= $serviciocreate->posicion;
+        $archivo_nombre =Str::slug($request->titulo, '-');
+      	$archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
+        $serviciocreate->titulo = $request->titulo;
+        $serviciocreate->texto = $request->texto;
+        $serviciocreate->posicion = $request->posicion;
+        if ($request->hasFile('imagen')) {
+            $img = Storage::putFileAs('public/servicio/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
+            $serviciocreate->imagen = $img;
+        }
+        $serviciocreate->publico = isset($request->publico) ? 1 : 0;
+        if(count($Servicios) < $request->posicion)
+        $serviciocreate->posicion = count($Servicios)+1;
+        $serviciocreate->save();
+   
+        $Servicios =  Servicios::all();
+        if( $flag_posicion < $request->posicion  ){
+                $update=Servicios::find($idCompare[0]->id);
+                $update->posicion =$request->posicion-2;
+                $update->save();
+                
+                
+        }
+            foreach ($Servicios as $servicio) {
+                    if(  $servicio->posicion ==  $serviciocreate->posicion){
+                        $this->editToUpdatePosicion($servicio->id);   
+                        } 
+                    }
+                            
+            
+
+       
+        $update=Servicios::find($id);
+        $update->posicion =$request->posicion;
+        $update->save();
+        $this->validateRepetido($id);
+        return redirect()->route('admin.servicio.index');
+
+    }
+
+    public function editToUpdatePosicion($id)
+    {
+        $Servicios =  Servicios::find($id);
+        $Servicios->posicion =  $Servicios->posicion+1;
+        $Servicios->save();
+
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $servicio =  Servicios::find($id);
+        $Servicios =  Servicios::all();
+        foreach ($Servicios as $item) {
+            if(  $item->posicion >= $servicio->posicion )
+               { 
+                $update = Servicios::find($item->id);
+                $update->posicion =  $update->posicion-1;
+                $update->save();
+                }
+            }
+            $servicio->delete();
+        return redirect()->route('admin.servicio.index');
+    }
 }
