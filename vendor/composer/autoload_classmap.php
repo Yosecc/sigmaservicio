@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\Backend\\CategoriasController' => $baseDir . '/app/Http/Controllers/Backend/CategoriasController.php',
     'App\\Http\\Controllers\\Backend\\ComentariosController' => $baseDir . '/app/Http/Controllers/Backend/ComentariosController.php',
     'App\\Http\\Controllers\\Backend\\Configuracion\\ConfigurarController' => $baseDir . '/app/Http/Controllers/Backend/Configuracion/ConfigurarController.php',
+    'App\\Http\\Controllers\\Backend\\MarcaController' => $baseDir . '/app/Http/Controllers/Backend/MarcaController.php',
     'App\\Http\\Controllers\\Backend\\NewsLetterController' => $baseDir . '/app/Http/Controllers/Backend/NewsLetterController.php',
     'App\\Http\\Controllers\\Backend\\NoticiasController' => $baseDir . '/app/Http/Controllers/Backend/NoticiasController.php',
     'App\\Http\\Controllers\\Backend\\PagosController' => $baseDir . '/app/Http/Controllers/Backend/PagosController.php',
