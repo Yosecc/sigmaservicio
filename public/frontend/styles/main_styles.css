@@ -34,8 +34,33 @@ COLOR PALETTE
 
 
 
-******************************/
 
+******************************/
+/*.btn-service{
+	border: 2px solid #ff4200 ; 
+	background: transparent; 
+	color:black; 
+	border-radius: 4px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+.btn-service:hover{
+	background: #ff4200; 
+	border: 2px solid #ff4200 ; 
+}*/
+.input-news {
+	border-radius: 0px;
+	height: 50px;
+}
+.btn-news {
+	background: #2A2865;
+	border-radius: 0px;
+	border: 0px;
+	height: 50px;
+}
 /***********
 1. Fonts
 ***********/
@@ -265,7 +290,7 @@ section
 {
 	width: 187px;
 	height: 66px;
-	background: #ff4200;
+	background: #2A2865;
 	overflow: hidden;
 }
 .button a
@@ -419,7 +444,7 @@ section
 }
 .nav_items li.active
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 .nav_items li.active a
 {
@@ -427,7 +452,7 @@ section
 }
 .nav_items li:hover
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 .nav_items li:hover a
 {
@@ -764,12 +789,12 @@ section
 }
 .main_slider_custom_dots li.active
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 .main_slider_custom_dot.active,
 .main_slider_custom_dot:hover
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 
 /*********************************
@@ -818,7 +843,7 @@ section
 	right: 0px;
 	width: auto;
 	height: 74px;
-	background: #ff4200;
+	background: #2A2865;
 	z-index: 11;
 	padding-right: 38px;
 	padding-left: 45px;

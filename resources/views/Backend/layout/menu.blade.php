@@ -37,26 +37,26 @@
         <p>Comentarios</p>
       </a>
     </li>
-    <li id="newsletter" class="nav-item">
+   {{--  <li id="newsletter" class="nav-item">
       <a class="nav-link disabled" href="{{ route('vernewsletter')}}">
         <i class="material-icons">email</i>
         <p>NewsLetter</p>
       </a>
-    </li>
-     <li id="noticias" class="nav-item">
+    </li> --}}
+   {{--   <li id="noticias" class="nav-item">
             <a class="nav-link" href="{{ route('vernoticias')}}">
               <i class="material-icons">vertical_split</i>
               <p>Noticias</p>
             </a>
-          </li>
-    <li id="preguntas" class="nav-item">
+          </li> --}}
+   {{--  <li id="preguntas" class="nav-item">
       <a class="nav-link disabled" href="{{ route('verpreguntas')}}">
         <i class="material-icons">contact_support</i>
         <p>Preguntas Frecuentes</p>
       </a>
-    </li>
+    </li> --}}
 
-    <li id="parametrizar" class="nav-item dropdown">
+   {{--  <li id="parametrizar" class="nav-item dropdown">
       <a class="nav-link dropdown-toggle d-flex justify-content-between align-items-center" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
         <span>
           <i class="material-icons">ballot</i>
@@ -70,7 +70,7 @@
         <a class="dropdown-item nav-link" href="" style="color:black;">Item</a>
         <a class="dropdown-item nav-link" href="" style="color:black;">Item</a>
       </div>
-    </li>
+    </li> --}}
 
     @if(Auth::user()->hasRole('admin'))
     <li id="configuracion" class="nav-item">

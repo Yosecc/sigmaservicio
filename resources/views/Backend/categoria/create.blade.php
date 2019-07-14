@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          <div class="row justify-content-center">
+          {{-- <div class="row justify-content-center">
             <div class="col-md-4 col-sm-4">
               <h4 class="title {{ $errors->has('url_imagen') ? ' has-error' : '' }}">Subir Imagen</h4>
               <div class="fileinput fileinput-new text-center" data-provides="fileinput">
@@ -80,10 +80,10 @@
               </div>
             </div>
             
+          </div> --}}
           </div>
-          </div>
-          <div class="clearfix"></div>
-          <button class="btn btn-primary pull-right" type="submit" >Crear Categoria</button>
+
+          <button class="btn btn-primary col-2 " type="submit" >Crear Categoria</button>
           </form>
         </div>
       </div>

@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
+{{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}
 </head>
 
 <body>
@@ -25,19 +26,22 @@
 
 		<!-- Logo -->
 		<div class="logo_container mr-auto">
-			<div class="logo">
-				<a href="#"><span>z</span>zeta<span>.</span></a>
+			<div class="logo col-lg-12">
+				<a href="#">
+					<img src="{{ asset('frontend/images/logo.jpg') }}" class="img-fluid"  alt="">
+				</a>
 			</div>
 		</div>
 
 		<!-- Main Navigation -->
 		<nav class="main_nav justify-self-end">
 			<ul class="nav_items">
-				<li class="active"><a href="#"><span>home</span></a></li>
-				<li><a href="services.html"><span>services</span></a></li>
-				<li><a href="elements.html"><span>elements</span></a></li>
-				<li><a href="blog.html"><span>blog</span></a></li>
-				<li><a href="contact.html"><span>contact</span></a></li>
+				<li class="active"><a href="#"><span>Inicio</span></a></li>
+				<li><a href="#"><span>¿Quiénes Somos?</span></a></li>
+				<li><a href="#"><span>Servicios</span></a></li>
+				<li><a href="#"><span>Contáctos</span></a></li>
+				{{-- <li><a href="#"><span>blog</span></a></li> --}}
+				{{-- <li><a href="#"><span>contact</span></a></li> --}}
 			</ul>
 		</nav>
 
@@ -56,21 +60,21 @@
 		<div class="fs_menu_shapes"><img src="{{ asset('frontend/images/menu_shapes.png') }}" alt=""></div>
 		<nav class="fs_menu_nav">
 			<ul class="fs_menu_list">
-				<li><a href="#"><span><span>H</span>Home</span></a></li>
-				<li><a href="#"><span><span>S</span>Services</span></a></li>
-				<li><a href="#"><span><span>E</span>Elements</span></a></li>
-				<li><a href="#"><span><span>B</span>Blog</span></a></li>
-				<li><a href="#"><span><span>C</span>Contact</span></a></li>
+				<li class=""><a href="#"><span>Inicio</span></a></li>
+				<li><a href="#"><span>¿Quiénes Somos?</span></a></li>
+				<li><a href="#"><span>Productos</span></a></li>
+				<li><a href="#"><span>Contáctos</span></a></li>
 			</ul>
 		</nav>
 		<div class="fs_social_container d-flex flex-row justify-content-end align-items-center">
 			<ul class="fs_social">
-				<li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li>
-				<li><a href="#"><i class="fab fa-facebook-f trans_300"></i></a></li>
-				<li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li>
-				<li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li>
-				<li><a href="#"><i class="fab fa-behance trans_300"></i></a></li>
-				<li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li>
+				{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
+				<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
+				{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
+				<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
+				{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
+				{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
+				{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
 			</ul>
 		</div>
 	</div>
@@ -90,12 +94,13 @@
 				<div class="col-sm-6 text-sm-right text-center">
 					<div class="footer_social_container">
 						<ul class="footer_social">
-							<li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li>
-							<li><a href="#"><i class="fab fa-facebook-f trans_300"></i></a></li>
-							<li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li>
-							<li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li>
-							<li><a href="#"><i class="fab fa-behance trans_300"></i></a></li>
-							<li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li>
+							{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
+							<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
+							{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
+							<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
+							{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
+							{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
+							{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
 						</ul>
 					</div>
 				</div>

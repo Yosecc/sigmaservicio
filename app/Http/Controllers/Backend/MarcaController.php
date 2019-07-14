@@ -53,7 +53,7 @@ class MarcaController extends Controller
         $archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
          
         if ($request->hasFile('imagen')) {
-            $img = Storage::putFileAs('public/slider/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
+            $img = Storage::putFileAs('public/marcas', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
             $marcaCreate->imagen = $img;
         }
         if(count($existe)){
