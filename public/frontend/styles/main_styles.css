@@ -61,6 +61,12 @@ COLOR PALETTE
 	border: 0px;
 	height: 50px;
 }
+.modal-style .modal-content{
+	border-radius: 0px;
+} 
+.modal-servicio .modal-dialog{
+	max-width: inherit;
+}
 /***********
 1. Fonts
 ***********/

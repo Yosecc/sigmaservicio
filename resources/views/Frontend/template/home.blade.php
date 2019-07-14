@@ -15,9 +15,12 @@
 									{!! $item->texto !!}
 									<br>
 									{{-- <div class="button discover_button"> --}}
-										<a href="#" class="btn btn-primary border-0 mt-5" style="border-radius: 0px;background: #2A2865">
+										{{-- <a href="#" class="btn btn-primary border-0 mt-5" style="border-radius: 0px;background: #2A2865">
 											<p class="pt-2">Solicita tu Cotización</p>
-										</a>
+										</a> --}}
+										<button type="button" class="btn btn-primary border-0 mt-5 p-3" style="border-radius: 0px;background: #2A2865" data-toggle="modal" data-target="#exampleModal">
+ Solicita tu Cotización
+</button>
 										{{-- <a href="#" class="d-flex flex-row align-items-center justify-content-center">Solicita tu Cotización<img src="{{ asset('frontend/images/arrow_right.svg') }}" alt=""></a> --}}
 									{{-- </div> --}}
 								</div>
@@ -69,3 +72,73 @@
 			{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
 		</ul>
 	</div>
+
+
+
+<div class="modal fade modal-style" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Solicitud de Cotización</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{{ route('form_contacto') }}" method="post" name="form-contacto" >
+      {{ csrf_field() }}
+      <div class="modal-body">
+        <div class="row">
+        	<div class="form-group col-12">
+        		<label for="nombre_empresa" >Nombre de la Empresa</label>
+        		<input type="text" class="form-control {{ $errors->has('nombre_empresa') ? 'is-invalid' : '' }}" name="nombre_empresa" id="nombre_empresa" placeholder="Ej. Sigma c.a">
+        		@if ($errors->has('nombre_empresa'))
+        			<div class="invalid-feedback">
+       				{{ $errors->first('nombre_empresa') }}
+      				</div>
+                @endif
+        	</div>
+        	<div class="form-group col-12">
+        		<label for="telefono" >Teléfono</label>
+        		<input type="text" class="form-control {{ $errors->has('telefono') ? 'is-invalid' : '' }}" name="telefono" id="telefono" placeholder="Ej. 00055500">
+        		@if ($errors->has('telefono'))
+        			<div class="invalid-feedback">
+       				{{ $errors->first('telefono') }}
+      				</div>
+                @endif
+        	</div>
+        	<div class="form-group col-12">
+        		<label for="email" >Correo Electrónico</label>
+        		<input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" id="email" placeholder="example@mail.com">
+        		@if ($errors->has('email'))
+        			<div class="invalid-feedback">
+       				{{ $errors->first('email') }}
+      				</div>
+                @endif
+        	</div>
+        	<div class="form-group col-12">
+        		<label for="servicio" >Servicio</label>
+        		<select name="servicio" class="form-control {{ $errors->has('servicio') ? 'is-invalid' : '' }}" >
+        			<option value="">Seleccione</option>
+        			@foreach ($categorias as $categoria)
+					@foreach ($categoria->servicio as $servicio)
+						<option value="{{ $servicio->id }}">{{ $servicio->nombre }}</option>
+					@endforeach
+				@endforeach
+        		</select>
+        		@if ($errors->has('servicio'))
+        			<div class="invalid-feedback">
+       				{{ $errors->first('servicio') }}
+      				</div>
+                @endif
+        	</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+        <input type="submit" class="btn btn-primary" name="enviar" value="Guardar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,8 @@
-<div class="testimonials">
-		<div class="container">
+<div class="testimonials pt-5 mt-5">
+		<div class="container mt-sm-5 pt-sm-5">
 			<div class="row">
 				<div class="col-lg-6 offset-lg-3 text-center section_title section_title_dark">
-					<h2>Nuestros Clientes</h2>
+					<h2 class="m-0">Nuestros Clientes</h2>
 				</div>
 			</div>
 			<div class="row">

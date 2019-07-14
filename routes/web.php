@@ -31,7 +31,8 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset'); 
-
+Route::post('form-contacto','Frontend\homeController@form_contacto')->name('form_contacto');
+Route::get('servicio-ajax', 'Frontend\homeController@servicio_ajax')->name('servicio-ajax');
 
 // BACKEND
 App::setLocale("es");

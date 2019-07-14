@@ -1,4 +1,4 @@
-<div class="features">
+<div class="features pt-1">
 	<div class="container">
 		<div class="row  mt-5">
 			<div class="col-12">
@@ -12,12 +12,12 @@
 		</div>
 		<div class="row ">
 
-			<div class="col-12 pt-5 text-center mt-5">
+			<div class="col-12 pt-5 text-center mt-lg-5">
 				<h1>Nuestros Beneficios</h1>
 			</div>
 
 			<!-- Features Item -->
-			<div class="col-lg-3 features_col">
+			<div class="col-lg-3 col-sm-6 features_col">
 				<div class="features_item d-flex flex-column align-items-center justify-content-end text-center">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_1.svg') }}" alt="">
@@ -28,7 +28,7 @@
 			</div>
 			
 			<!-- Features Item -->
-			<div class="col-lg-3 features_col">
+			<div class="col-lg-3 col-sm-6 features_col">
 				<div class="features_item d-flex flex-column align-items-center justify-content-center text-center">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_2.svg') }}" alt="">
@@ -39,15 +39,15 @@
 			</div>
 			
 			<!-- Features Item -->
-			<div class="col-lg-3 features_col">
+			<div class="col-lg-3 col-sm-6 features_col">
 				<div class="features_item d-flex flex-column align-items-center justify-content-center text-center">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_3.svg') }}" alt="">
 					</div>
-					<p> Equipos Certificados y en optimas condiciones.</p>
+					<p> Nuestros equipos se encuentran en óptimas condiciones, certificados bajo estándares internacionales, para brindarles un servicio de calidad y una operación segura</p>
 				</div>
 			</div>
-			<div class="col-lg-3 features_col">
+			<div class="col-lg-3 col-sm-6 features_col">
 				<div class="features_item d-flex flex-column align-items-center justify-content-center text-center">
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_3.svg') }}" alt="">
