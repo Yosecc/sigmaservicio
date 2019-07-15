@@ -48,7 +48,7 @@ toolbarGroups : [
               <div class="form-group bmd-form-group {{ $errors->has('publico') ? ' has-error' : '' }}">
                 <div class="form-check form-check-inline">
                 <label id="publico" class="form-check-label">
-                  <input id="publicoval" name="publico"  class="form-check-input" type="checkbox" {{ $servicio->publico ? 'checked',''}}>
+                  <input id="publicoval" name="publico"  class="form-check-input" type="checkbox" {{ $servicio->publico ? 'checked' : ''}}>
                   Público
                   <span class="form-check-sign">
                     <span class="check"></span>
