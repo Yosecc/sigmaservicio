@@ -17,8 +17,8 @@
 			<div class="col text-center d-flex justify-content-center">
 				<form action="" method="get" accept-charset="utf-8" class="col-11">
 					<div class="row text-center justify-content-center">
-						<div class="col-12 col-sm-8 p-0"><input type="text" class="form-control input-news" placeholder="Email"></div>
-						<div class="col-8 mt-4 mt-sm-0 col-sm-4 p-0"><input type="submit" class="btn btn-primary btn-news col-12" value="Enviar"></div>
+						<div class="col-12 col-sm-6 p-0"><input type="text" class="form-control input-news" placeholder="Email"></div>
+						<div class="col-8 mt-4 mt-sm-0 col-sm-2 p-0"><input type="submit" class="btn btn-primary btn-news col-12" value="Enviar"></div>
 					</div>
 				</form>
 			</div>
