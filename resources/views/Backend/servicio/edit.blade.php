@@ -130,7 +130,7 @@ toolbarGroups : [
                 <div>
                   <span class="btn btn-rose btn-round btn-file">
                     <span class="fileinput-new">Buscar</span>
-                    <span class="fileinput-exists">Cambiar</span><input id="imagen" name="imagen" type="file" name="..." required>
+                    <span class="fileinput-exists">Cambiar</span><input id="imagen" name="imagen" type="file" name="..." >
                     @if ($errors->has('url_imagen'))
                         <span class="help-block">
                             <strong>{{ $errors->first('url_imagen') }}</strong>

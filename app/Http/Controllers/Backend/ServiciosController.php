@@ -145,24 +145,28 @@ class ServiciosController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $Servicios =  Servicios::all();
         $serviciocreate = Servicios::find($id);
         $idCompare= Servicios::where('posicion',$request->posicion)->get();
         $flag_posicion= $serviciocreate->posicion;
         $archivo_nombre =Str::slug($request->titulo, '-');
       	$archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
-        $serviciocreate->titulo = $request->titulo;
+        $serviciocreate->nombre = $request->nombre;
         $serviciocreate->texto = $request->texto;
         $serviciocreate->posicion = $request->posicion;
+
         if ($request->hasFile('imagen')) {
             $img = Storage::putFileAs('public/servicio/imagenes', new File($request->imagen), $archivo_nombre.'.'.$request->imagen->getClientOriginalExtension());
             $serviciocreate->imagen = $img;
         }
+
         $serviciocreate->publico = isset($request->publico) ? 1 : 0;
         if(count($Servicios) < $request->posicion)
         $serviciocreate->posicion = count($Servicios)+1;
         $serviciocreate->save();
-   
+   // dd($request->all());
+
         $Servicios =  Servicios::all();
         if( $flag_posicion < $request->posicion  ){
                 $update=Servicios::find($idCompare[0]->id);
