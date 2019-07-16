@@ -62,7 +62,7 @@ div[style*="margin: 16px 0;"] { margin: 0 !important; }
 </head>
 @php
     $img= public_path('frontend/images/bg1.jpeg');
-    $logo = public_path('images/logo.png');
+    $logo = public_path('frontend/images/logo.jpg');
 @endphp
 
 <body style="margin: 0 !important; padding: 0; !important background-color: #ffffff;" bgcolor="#ffffff">

@@ -130,8 +130,6 @@
 
 @push('scripts')
  <script>
- 
-
     var editor_config = {
     path_absolute : "{{ URL::to('/') }}/",
     selector: "#editor",
