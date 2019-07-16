@@ -1,4 +1,4 @@
-<div class="contact prlx_parent p-0">
+<div id="contacto" class="contact prlx_parent p-0">
 
 	<div class="contact_background prlx" style="background-image: url('{{ asset('frontend/images/bg3.jpg') }}');"></div>
 

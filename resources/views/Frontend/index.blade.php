@@ -6,12 +6,12 @@
 		@include('Frontend.template.home')		
 		<!-- Features -->
 		@include('Frontend.template.features')
-		<!-- About -->
-		@include('Frontend.template.about')	
+		<!-- Services -->
+		@include('Frontend.template.services')	
 		<!-- Testimonials -->
 		@include('Frontend.template.testimonials')	
 		<!-- Services -->
-		@include('Frontend.template.services')	
+		@include('Frontend.template.about')	
 		<!-- Clients -->
 		@include('Frontend.template.clients')	
 		<!-- Contact -->

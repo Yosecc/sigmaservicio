@@ -8,6 +8,7 @@
 /public/.sass-cache
 npm-debug.log
 yarn-error.log
+/storage/publicaciones/*
 config/database.php
 .env
 composer.lock

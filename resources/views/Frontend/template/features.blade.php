@@ -1,7 +1,7 @@
-<div class="features pt-1">
-	<div class="container">
+<div id="quienes-somos" class="features pt-1">
+	<div class="container mt-sm-5">
 		<div class="row  mt-5">
-			<div class="col-12">
+			<div class="col-12 mt-5">
 				<h1>¿Quienes Somos?</h1>
 			</div>
 			<div class="col-12">
