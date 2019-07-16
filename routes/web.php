@@ -33,6 +33,10 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset'); 
 Route::post('form-contacto','Frontend\homeController@form_contacto')->name('form_contacto');
 Route::get('servicio-ajax', 'Frontend\homeController@servicio_ajax')->name('servicio-ajax');
+Route::post('form_cotizacion','Frontend\homeController@form_cotizacion')->name('form_cotizacion');
+
+
+// Route::post('contact-form','Frontend\HomeController@mensaje')->name('contact-form');
 
 // BACKEND
 App::setLocale("es");

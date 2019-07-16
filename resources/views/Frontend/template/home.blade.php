@@ -85,10 +85,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{ route('form_contacto') }}" method="post" name="form-contacto" >
+      <form action="{{ route('form_cotizacion') }}" method="post" name="form_cotizacion" id="form_cotizacion" >
       {{ csrf_field() }}
       <div class="modal-body">
-        <div class="row">
+      	<img src="{{ asset('frontend/images/check.gif') }}" class="img-fluid gif-check" id="check" style="display: none" alt="">
+        <div class="row" id="cont-form">
         	<div class="form-group col-12">
         		<label for="nombre_empresa" >Nombre de la Empresa</label>
         		<input type="text" class="form-control {{ $errors->has('nombre_empresa') ? 'is-invalid' : '' }}" name="nombre_empresa" id="nombre_empresa" placeholder="Ej. Sigma c.a">
@@ -136,7 +137,8 @@
       </div>
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-        <input type="submit" class="btn btn-primary" name="enviar" value="Guardar">
+        <input type="submit" class="btn btn-primary submit-e" name="enviar" value="Guardar">
+        <img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading" style="display: none" alt="">
         </form>
       </div>
     </div>

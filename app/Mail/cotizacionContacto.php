@@ -7,18 +7,16 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class userContacto extends Mailable
+class cotizacionContacto extends Mailable
 {
     use Queueable, SerializesModels;
     protected $nombres;
     protected $email;
     protected $telefono;
     protected $servicio;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
+
+
+
     public function __construct($nombres,$email,$telefono,$servicio)
     {
         $this->nombres = $nombres;
@@ -34,13 +32,14 @@ class userContacto extends Mailable
      */
     public function build()
     {
+
         $nombres= $this->nombres;
         $email= $this->email;
         $telefono= $this->telefono;
         $servicio= $this->servicio;
 
         return $this->from('enviolaravelmail@gmail.com')
-                    ->view('Frontend.mail.userContacto')
+                    ->view('Frontend.mail.cotizacionContacto')
                     ->with([
                             'nombres' => $nombres,
                             'email' => $email,
@@ -48,6 +47,6 @@ class userContacto extends Mailable
                             'servicio'=>$servicio,
 
                       ])
-                    ->subject('Solicitud procesada');
+                    ->subject('Solicitud de Cotización');
     }
 }
