@@ -1,4 +1,4 @@
-<div class="home">
+<div class="home" id="home">
 		<div class="hero_slider_container slider_prlx">
 			<div class="owl-carousel owl-theme hero_slider">
 

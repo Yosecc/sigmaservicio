@@ -122,7 +122,9 @@
   <script src="{{ asset('js/material-dashboard.js?v=2.1.0') }}"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('demo/demo.js') }}"></script>
-  <script src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script>
+  {{-- <script src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js"></script> --}}
+ <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+
   <!-- <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/decoupled-document/ckeditor.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/decoupled-document/translations/es.js"></script> -->
   <script>

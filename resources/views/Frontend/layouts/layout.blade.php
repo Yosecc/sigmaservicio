@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 
 
+
 {{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}
 </head>
 
@@ -38,10 +39,10 @@
 		<!-- Main Navigation -->
 		<nav class="main_nav justify-self-end">
 			<ul class="nav_items">
-				<li class="active"><a href="#"><span>Inicio</span></a></li>
-				<li><a href="#"><span>¿Quiénes Somos?</span></a></li>
-				<li><a href="#"><span>Servicios</span></a></li>
-				<li><a href="#"><span>Contáctos</span></a></li>
+				<li class="active"><a href="#home"><span>Inicio</span></a></li>
+				<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
+				<li><a href="#servicios"><span>Servicios</span></a></li>
+				<li><a href="#contacto"><span>Contáctos</span></a></li>
 				{{-- <li><a href="#"><span>blog</span></a></li> --}}
 				{{-- <li><a href="#"><span>contact</span></a></li> --}}
 			</ul>
@@ -62,10 +63,10 @@
 		<div class="fs_menu_shapes"><img src="{{ asset('frontend/images/menu_shapes.png') }}" alt=""></div>
 		<nav class="fs_menu_nav">
 			<ul class="fs_menu_list">
-				<li class=""><a href="#"><span>Inicio</span></a></li>
-				<li><a href="#"><span>¿Quiénes Somos?</span></a></li>
-				<li><a href="#"><span>Productos</span></a></li>
-				<li><a href="#"><span>Contáctos</span></a></li>
+				<li class=""><a href="#home"><span>Inicio</span></a></li>
+				<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
+				<li><a href="#servicios"><span>Productos</span></a></li>
+				<li><a href="#contacto"><span>Contáctos</span></a></li>
 			</ul>
 		</nav>
 		<div class="fs_social_container d-flex flex-row justify-content-end align-items-center">
