@@ -92,34 +92,34 @@
         <div class="row" id="cont-form">
         	<div class="form-group col-12">
         		<label for="nombre_empresa" >Nombre de la Empresa</label>
-        		<input type="text" class="form-control {{ $errors->has('nombre_empresa') ? 'is-invalid' : '' }}" name="nombre_empresa" id="nombre_empresa" placeholder="Ej. Sigma c.a">
-        		@if ($errors->has('nombre_empresa'))
+        		<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa" placeholder="Ej. Sigma c.a" required="">
+
         			<div class="invalid-feedback">
-       				{{ $errors->first('nombre_empresa') }}
+
       				</div>
-                @endif
+
         	</div>
         	<div class="form-group col-12">
         		<label for="telefono" >Teléfono</label>
-        		<input type="text" class="form-control {{ $errors->has('telefono') ? 'is-invalid' : '' }}" name="telefono" id="telefono" placeholder="Ej. 00055500">
-        		@if ($errors->has('telefono'))
+        		<input type="text" class="form-control " name="telefono" id="telefono" required="" placeholder="Ej. 00055500">
+
         			<div class="invalid-feedback">
-       				{{ $errors->first('telefono') }}
+
       				</div>
-                @endif
+
         	</div>
         	<div class="form-group col-12">
         		<label for="email" >Correo Electrónico</label>
-        		<input type="text" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" name="email" id="email" placeholder="example@mail.com">
-        		@if ($errors->has('email'))
+        		<input type="text" class="form-control " name="email" id="email" required="" placeholder="example@mail.com">
+
         			<div class="invalid-feedback">
-       				{{ $errors->first('email') }}
+
       				</div>
-                @endif
+
         	</div>
         	<div class="form-group col-12">
         		<label for="servicio" >Servicio</label>
-        		<select name="servicio" class="form-control {{ $errors->has('servicio') ? 'is-invalid' : '' }}" >
+        		<select name="servicio" class="form-control " required="" >
         			<option value="">Seleccione</option>
         			@foreach ($categorias as $categoria)
 					@foreach ($categoria->servicio as $servicio)
@@ -127,11 +127,11 @@
 					@endforeach
 				@endforeach
         		</select>
-        		@if ($errors->has('servicio'))
+
         			<div class="invalid-feedback">
-       				{{ $errors->first('servicio') }}
+
       				</div>
-                @endif
+
         	</div>
         </div>
       </div>

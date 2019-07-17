@@ -53,7 +53,7 @@
             <div class="form-group {{ $errors->has('contenido') ? ' has-error' : '' }}">
               {!! Form::label('contenido','Contenido') !!}
               <div class="form-group bmd-form-group">
-                  <textarea id="editor" name="texto" class="form-control" rows="4" required=""></textarea>
+                  <textarea id="editor" name="texto" class="form-control" rows="4"></textarea>
                 @if ($errors->has('contenido'))
                     <span class="help-block">
                         <strong>{{ $errors->first('contenido') }}</strong>
