@@ -50,7 +50,7 @@
 			<div class="col-lg-3 col-sm-6 features_col">
 				<div class="features_item d-flex flex-column align-items-center justify-content-center text-center">
 					<div class="icon_container d-flex flex-column justify-content-end">
-						<img src="{{ asset('frontend/images/icon_3.svg') }}" alt="">
+						<img src="{{ asset('frontend/images/icon_4.svg') }}" alt="">
 					</div>
 					<p> Personal com amplia experiencia en cálculos para izamiento y transporte de cargas pesadas y extradimensionadas.</p>
 				</div>
