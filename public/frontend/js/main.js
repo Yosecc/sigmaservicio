@@ -3,6 +3,7 @@ modalServicio()
 function modalServicio(){
 	$(document).on('click', '.item-servicio', function(event){
 		id = $(this).data('id')
+    console.log('el id= '+id)
 			$('.nombre-servicio-modal').html('')
      		$('.texto-servicio-modal').html('')
 	 	$.ajax({
