@@ -78,7 +78,7 @@ class homeController extends Controller{
     }
   
   	public function servicio_ajax(Request $request){
-      dd($request);
+      dd($request->all());
   		$servicio = Servicios::where('id', $request->id)->first();
      // dd($servicio);
   		return response()->json(['servicio' => $servicio]);
