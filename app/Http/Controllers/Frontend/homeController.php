@@ -59,7 +59,7 @@ class homeController extends Controller{
          $servicio = Servicios::where('id',$request->servicio)->first();
 
          $servicio = $servicio->nombre;
-          $correo_jefe='yosec.cervino@gmail.com';
+          $correo_jefe='sigmapanamaventas@gmail.com';
           Mail::to($correo_jefe)->send(new cotizacionContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           Mail::to($request->email)->send(new userContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           return response()->json(['servicio' => $servicio]);
@@ -68,7 +68,7 @@ class homeController extends Controller{
 
     private function send_email($nombre,$telefono,$email,$servicio){
         //sigmapanamaventas@gmail.com
-        $correo_jefe='yosec.cervino@gmail.com';
+        $correo_jefe='sigmapanamaventas@gmail.com';
         Mail::to($email)->send(new userContacto($nombre,$email,$telefono,$servicio));
         Mail::to($correo_jefe)->send(new jefeContacto($nombre,$email,$telefono,$servicio));
         
@@ -77,10 +77,10 @@ class homeController extends Controller{
     
     }
   
-  	public function servicio_ajax(Request $request){
-      dd($request->all());
-  		$servicio = Servicios::where('id', $request->id)->first();
-     // dd($servicio);
+  	public function servicio_ajax($id){
+      //dd($id);
+  		$servicio = Servicios::where('id', $id)->first();
+     //dd($servicio);
   		return response()->json(['servicio' => $servicio]);
   	}
 }

@@ -6,13 +6,15 @@ function modalServicio(){
     console.log('el id= '+id)
 			$('.nombre-servicio-modal').html('')
      		$('.texto-servicio-modal').html('')
+       
 	 	$.ajax({
-            url: 'servicio-ajax',
+            url: route('servicio-ajax',id),
             type: "get",
             dataType: "json",
-            data: {id:id},
+            // data: {id:id},
             cache: false,
             contentType: false,
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
      		// processData: false,
      		beforeSend: function() {
      			

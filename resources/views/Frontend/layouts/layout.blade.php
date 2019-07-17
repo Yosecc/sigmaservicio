@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
-
+<meta name="csrf-token" content="{{ csrf_token() }}"> 
 
 
 {{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}
@@ -128,6 +128,7 @@
 <script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
 <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
+@routes
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 
 </body>
