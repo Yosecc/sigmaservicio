@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Sigmaservicio</title>
+<title>@isset ($title) {{ $title }} @endisset</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,29 +13,29 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}"> 
-
+<meta name="google-site-verification" content="PcmIZMfk6ar146c25-6FkufLyJ7oaMn42Ku0Gj2UQQ0" />
 @yield('meta')
 	<meta http-equiv="Content-Type" content="text/html; ISO-8859-1">
 	<meta NAME="DC.Language" SCHEME="RFC1766" CONTENT="Spanish">
-	<meta NAME="AUTHOR" CONTENT="Sigmaservicio">
-	<meta NAME="DESCRIPTION" CONTENT="Sigmaservicio">
+	<meta NAME="AUTHOR" CONTENT="@isset ($title) {{ $title }} @endisset">
+	<meta NAME="DESCRIPTION" CONTENT="@isset ($title) {{ $title }} @endisset">
 	<meta NAME="KEYWORDS" CONTENT="">
 	<meta NAME="Resource-type" CONTENT="Homepage">
 	<meta NAME="Revisit-after" CONTENT="2 days">
 	<meta NAME="robots" content="ALL">
 	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.ico') }}">
-	<meta property="og:site_name" content="Sigmaservicio">
+	<meta property="og:site_name" content="@isset ($title) {{ $title }} @endisset">
 	<meta property="og:type" content="website" /> 
 	<meta property="og:updated_time" content="1440432930" /> 
-	<meta property="og:title" content="Sigmaservicio" /> 
-	<meta property="og:description" content="Sigmaservicio" /> 
+	<meta property="og:title" content="@isset ($title) {{ $title }} @endisset" /> 
+	<meta property="og:description" content="@isset ($descripcion) {{ $descripcion }} @endisset" /> 
 	<meta property="og:image" itemprop="image" content="{{ asset('frontend/images/logo.png') }}"> 
-	<meta property="og:url" content="https://sigmaservicio.com/"/>
+	<meta property="og:url" content="@isset ($meta_url) {{ $meta_url }} @endisset"/>
 	<meta property="og:type" content="website" /> 
 	<meta name="twitter:card" content="summary">
-	<meta name="twitter:url" contnet="https://sigmaservicio.com/">
-	<meta name="twitter:title" content="Sigmaservicio">
-	<meta name="twitter:description" content="Sigmaservicio">
+	<meta name="twitter:url" contnet="@isset ($meta_url) {{ $meta_url }} @endisset">
+	<meta name="twitter:title" content="@isset ($title) {{ $title }} @endisset">
+	<meta name="twitter:description" content="@isset ($descripcion) {{ $descripcion }} @endisset">
 	<meta name="twitter:image" content="{{ asset('frontend/images/logo.png') }}">
 
 
@@ -55,7 +55,7 @@
 		<div class="logo_container mr-auto">
 			<div class="logo col-lg-12">
 				<a href="#">
-					<img src="{{ asset('frontend/images/logo.jpg') }}" class="img-fluid"  alt="">
+					<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid"  alt="">
 				</a>
 			</div>
 		</div>
