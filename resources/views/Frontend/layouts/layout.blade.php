@@ -31,7 +31,6 @@
 	<meta property="og:description" content="@isset ($descripcion) {{ $descripcion }} @endisset" /> 
 	<meta property="og:image" itemprop="image" content="{{ asset('frontend/images/logo.png') }}"> 
 	<meta property="og:url" content="@isset ($meta_url) {{ $meta_url }} @endisset"/>
-	<meta property="og:type" content="website" /> 
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:url" contnet="@isset ($meta_url) {{ $meta_url }} @endisset">
 	<meta name="twitter:title" content="@isset ($title) {{ $title }} @endisset">
