@@ -18,7 +18,7 @@
     }
 
 .card [class*="card-header-"] .card-title, .card [class*="card-header-"] .card-title + .card-category,.dark-edition .btn.btn-white.btn-link, .sidebar[data-background-color="black"] .nav .active .nav-link{
-    color:black !important;
+    color:white !important;
    
 }
 
@@ -34,7 +34,7 @@
 }
 
 .btn-primary, .page-item.active .page-link{
-    background-color: #E54E2A !important;
+    background-color: #2A2865 !important;
 }
 
 .text-black {

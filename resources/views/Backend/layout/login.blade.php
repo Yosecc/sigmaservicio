@@ -17,7 +17,7 @@
 <body class="dark-edition">
     @include('Backend.layout.menulogin')
         <div class="wrapper wrapper-full-page">
-<div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
+{{-- <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;"> --}}
   <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
   <div class="container">
     @yield('content')
@@ -48,7 +48,7 @@
               </li>
           </ul>
         </nav> --}}
-        <div class="copyright float-right">
+        <div class="copyright float-right" >
             &copy;
             <script>
                 document.write(new Date().getFullYear())

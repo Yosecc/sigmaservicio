@@ -44,11 +44,11 @@
                           <td>
                             {{ $comentario->updated_at}}
                           </td>
-                          <td class="td-actions">
-                            <button type="button" rel="tooltip" title="" onclick="location.href='{{ route('buscarcomentario',['id'=>$comentario->id])}}'" class="btn btn-white btn-link btn-sm" data-original-title="Editar">
+                          <td class="td-actions btn-group">
+                            <button type="button" rel="tooltip" title="" onclick="location.href='{{ route('buscarcomentario',['id'=>$comentario->id])}}'" class="btn btn-white btn-primary btn-link btn-sm" data-original-title="Editar">
                               <i class="material-icons">edit</i>
                             </button>
-                            <button type="button" rel="tooltip" title="" onclick="location.href='{{ route('eliminarcomentario',['id'=>$comentario->id])}}'" class="btn btn-white btn-link btn-sm" data-original-title="Remover">
+                            <button type="button" rel="tooltip" title="" onclick="location.href='{{ route('eliminarcomentario',['id'=>$comentario->id])}}'" class="btn btn-white btn-primary btn-link btn-sm" data-original-title="Remover">
                               <i class="material-icons">close</i>
                             </button>
                           </td>

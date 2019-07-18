@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <title>Sigmaservicio</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
 <link href="{{ asset('frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
@@ -14,6 +13,31 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}"> 
+
+@yield('meta')
+	<meta http-equiv="Content-Type" content="text/html; ISO-8859-1">
+	<meta NAME="DC.Language" SCHEME="RFC1766" CONTENT="Spanish">
+	<meta NAME="AUTHOR" CONTENT="Sigmaservicio">
+	<meta NAME="DESCRIPTION" CONTENT="Sigmaservicio">
+	<meta NAME="KEYWORDS" CONTENT="">
+	<meta NAME="Resource-type" CONTENT="Homepage">
+	<meta NAME="Revisit-after" CONTENT="2 days">
+	<meta NAME="robots" content="ALL">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/favicon.ico') }}">
+	<meta property="og:site_name" content="Sigmaservicio">
+	<meta property="og:type" content="website" /> 
+	<meta property="og:updated_time" content="1440432930" /> 
+	<meta property="og:title" content="Sigmaservicio" /> 
+	<meta property="og:description" content="Sigmaservicio" /> 
+	<meta property="og:image" itemprop="image" content="{{ asset('frontend/images/logo.png') }}"> 
+	<meta property="og:url" content="https://sigmaservicio.com/"/>
+	<meta property="og:type" content="website" /> 
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:url" contnet="https://sigmaservicio.com/">
+	<meta name="twitter:title" content="Sigmaservicio">
+	<meta name="twitter:description" content="Sigmaservicio">
+	<meta name="twitter:image" content="{{ asset('frontend/images/logo.png') }}">
+
 
 
 {{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}

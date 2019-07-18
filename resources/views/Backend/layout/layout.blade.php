@@ -36,7 +36,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="https://lariojaautentica.com/" class="simple-text logo-normal" style="color: red">
+        <a href="{{ route('/') }}" class="simple-text logo-normal" style="color: white; font-weight:bold">
           <b>@isset ($title) {{ $title }} @endisset</b>
         </a>
       </div>
@@ -48,7 +48,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:void(0)">Bienvenido </a>
+            <a class="navbar-brand" href="javascript:void(0)">Panel Administrativo </a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>

@@ -22,37 +22,37 @@
                     <input type="text" class="form-control" value="@isset ($title) {{ $title }} @endisset" name="title" id="title" placeholder="" >
                   </div>
                 </div>
-                <div class="col-6 mt-4">
+                {{-- <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="telefono">Teléfono</label>
                     <input type="text" class="form-control" value="@isset ($telefono) {{ $telefono }} @endisset" name="telefono" id="telefono" placeholder="">
                   </div>
-                </div>
+                </div> --}}
 
-                <div class="col-6 mt-4">
+              {{--   <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" value="@isset ($email) {{ $email }} @endisset" name="email" id="email" placeholder="">
                   </div>
-                </div>
-                <div class="col-6 mt-4">
+                </div> --}}
+                {{-- <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="direccion">Dirección</label>
                     <input type="text" class="form-control" value="@isset ($direccion) {{ $direccion }} @endisset" name="direccion" id="direccion" placeholder="">
                   </div>
-                </div>
-                <div class="col-6 mt-4">
+                </div> --}}
+               {{--  <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="ubicacion">Ubicación (Iframe)</label>
                     <input type="text" class="form-control" value="@isset ($ubicacion) {{ $ubicacion }} @endisset" name="ubicacion" id="ubicacion" placeholder="">
                   </div>
-                </div>
-                <div class="col-6 mt-4">
+                </div> --}}
+              {{--   <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="video">Video (Iframe)</label>
                     <input type="text" class="form-control" value="@isset ($video) {{ $video }} @endisset" name="video" id="video" placeholder="">
                   </div>
-                </div>
+                </div> --}}
                 <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="facebook">Facebook (link)</label>
@@ -83,12 +83,12 @@
                     <input type="text" class="form-control" value="@isset ($meta_description) {{ $meta_description }} @endisset" name="meta_description" id="meta_description" placeholder="" maxlength="100">
                   </div>
                 </div>
-                <div class="col-6 mt-4">
+                {{-- <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="meta_name">Meta Nombre</label>
                     <input type="text" class="form-control" value="@isset ($meta_name) {{ $meta_name }} @endisset" name="meta_name" id="meta_name" placeholder="">
                   </div>
-                </div>
+                </div> --}}
                 <div class="col-6 mt-4">
                   <div class="form-group">
                     <label for="meta_url">Meta Url</label>
@@ -97,12 +97,12 @@
                 </div>
                 
 
-                <div class="col-12 mt-4">
+                {{-- <div class="col-12 mt-4">
                   <div class="form-group">
                     <label for="politica_privacidad">Política de Privacidad</label><br>
                     <textarea name="politica_privacidad"  id="politica_privacidad" class="pt-3">@isset ($politica_privacidad) {{ $politica_privacidad }} @endisset</textarea>
                   </div>
-                </div>
+                </div> --}}
                 </div>
               </div>
             </div>

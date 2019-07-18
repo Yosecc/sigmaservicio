@@ -2,7 +2,7 @@
   &:not([class*="bg-"]) {
     .navbar-brand,
     .collapse .navbar-nav .nav-item .nav-link {
-      color: $navbar-color-links;
+      color: $black-color;//$navbar-color-links
     }
   }
 

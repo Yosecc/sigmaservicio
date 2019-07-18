@@ -19,13 +19,13 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <tr><th>
-                         Titulo
+                         Título
                         </th>
                         <th>
-                          Posicion
+                          Posición
                         </th>
                         <th>
-                          Publico
+                          Público
                         </th>
                         <th>
                           Acciones
@@ -61,9 +61,10 @@
                     document.getElementById ('{{'delete_form'.$slider->id}}').submit();">
                               <i class="fas fa-times"></i>
                             </a>
-                    <form id="{{'delete_form'.$slider->id}}" action="{{ route('admin.slider.destroy', ['id' => $slider->id]) }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}</form>
+                    
                             </div>
+                            <form id="{{'delete_form'.$slider->id}}" action="{{ route('admin.slider.destroy', ['id' => $slider->id]) }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}</form>
                            
                           </td>
                         </tr>

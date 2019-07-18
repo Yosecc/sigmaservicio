@@ -1,5 +1,6 @@
 .form-control {
-  color: $white-color;
+  color: $black-color; //color input
+  padding: 20px 0px; //padding de input
 
   @include material-placeholder() {
     color: $placeholder-color;
@@ -18,7 +19,7 @@
 }
 
 .form-group label {
-  color: $placeholder-color;
+  color: $placeholder-color !important;
 }
 
 @include bmd-form-color($bmd-label-color, $bmd-label-color-focus, $dark-input-border-color, $dark-input-border-color);

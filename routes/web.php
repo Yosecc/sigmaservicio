@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect()->route('login'); 
-});
+// Route::get('/', function () {
+//     // return view('welcome');
+//     return redirect()->route('login'); 
+// });
 // Auth::routes();
 // 
- Route::get('/', 'Frontend\homeController@index');
+ Route::get('/', 'Frontend\homeController@index')->name('/');
 
 
 // Authentication Routes...
@@ -47,7 +47,7 @@ Route::namespace('Backend')->middleware(['middleware' => 'auth'])->group(functio
 
   Route::resource('sliders','SliderController');
   Route::resource('noticias','NoticiasController');
-  Route::resource('newsletter','NewsletterController');
+  // Route::resource('newsletter','NewsletterController');
   Route::resource('solicitud','SolicitudController');
   Route::resource('categorias','CategoriasController');
   Route::resource('preguntas','PreguntasController');
@@ -128,8 +128,8 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
   });
   //*************** NEWSLETTER**************************************************************
   //Listar registros de newsletter
-  Route::get('newsletter', ['as' => 'vernewsletter', 'uses'=>'Backend\NewsLetterController@store']);
-  Route::get('newsletters', ['as' => 'excelnewsletter', 'uses'=>'Backend\NewsLetterController@excel']); 
+  // Route::get('newsletter', ['as' => 'vernewsletter', 'uses'=>'Backend\NewsLetterController@store']);
+  // Route::get('newsletters', ['as' => 'excelnewsletter', 'uses'=>'Backend\NewsLetterController@excel']); 
   //********************************** FIN NEWSLETTER*************************************************
 
 

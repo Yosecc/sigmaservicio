@@ -20,14 +20,14 @@ function modalServicio(){
      			
     		},
      		success: function(data) {
-          console.log(data)
+          // console.log(data)
      			$('.nombre-servicio-modal').html(data.servicio.nombre)
      			$('.texto-servicio-modal').html(data.servicio.texto)
 
                 
             },
             error: function(data){
-              console.log(data)
+              // console.log(data)
             },
         })	
 	})   

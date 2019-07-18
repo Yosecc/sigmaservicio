@@ -4,11 +4,11 @@
 <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h3 class="card-title "><b>categorias</b></h3>
+                  <h3 class="card-title "><b>Categorías</b></h3>
 
 
                   <a href="{{ route('admin.categoria.create')}}" class="card-category pl-2">
-                    <i class="fas fa-plus-circle"></i> Agregar categorias
+                    <i class="fas fa-plus-circle"></i> Agregar categoría
                   </a>
 
                   <!-- <p class="card-category"> Here is a subtitle for this table</p> -->
@@ -19,13 +19,13 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <tr><th>
-                         Titulo
+                         Título
                         </th>
                         <th>
-                          Posicion
+                          Posición
                         </th>
                         <th>
-                          Publico
+                          Público
                         </th>
                         <th>
                           Acciones
@@ -61,9 +61,10 @@
                     document.getElementById ('{{'delete_form'.$categoria->id}}').submit();">
                               <i class="fas fa-times"></i>
                             </a>
-                    <form id="{{'delete_form'.$categoria->id}}" action="{{ route('admin.categoria.destroy', ['id' => $categoria->id]) }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}</form>
+                    
                             </div>
+                            <form id="{{'delete_form'.$categoria->id}}" action="{{ route('admin.categoria.destroy', ['id' => $categoria->id]) }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}</form>
                            
                           </td>
                         </tr>

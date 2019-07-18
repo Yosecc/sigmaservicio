@@ -32,7 +32,7 @@
               <td>{{ $usuario->numero_fiscal }}</td>
               <td>{{ $usuario->email }}</td>
               <td class="td-actions">
-                <button type="button" class="btn btn-white btn-link btn-sm"          
+                <button type="button" class="btn btn-white btn-primary btn-link btn-sm"          
                   data-original-title="Editar" 
                   data-target="#fichaUsuario{{ $usuario->id }}"
                   data-toggle="modal"

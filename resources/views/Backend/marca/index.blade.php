@@ -4,7 +4,7 @@
 <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
-                  <h3 class="card-title "><b>marcas</b></h3>
+                  <h3 class="card-title "><b>Marcas</b></h3>
 
 
                   <a href="{{ route('admin.marca.create')}}" class="card-category pl-2">
@@ -19,13 +19,13 @@
                     <table class="table">
                       <thead class=" text-primary">
                         <tr><th>
-                         Titulo
+                         Título
                         </th>
                         <th>
-                          Posicion
+                          Posición
                         </th>
                         <th>
-                          Publico
+                          Público
                         </th>
                         <th>
                           Acciones
@@ -61,9 +61,10 @@
                     document.getElementById ('{{'delete_form'.$marca->id}}').submit();">
                               <i class="fas fa-times"></i>
                             </a>
-                    <form id="{{'delete_form'.$marca->id}}" action="{{ route('admin.marca.destroy', ['id' => $marca->id]) }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}</form>
+                    
                             </div>
+                            <form id="{{'delete_form'.$marca->id}}" action="{{ route('admin.marca.destroy', ['id' => $marca->id]) }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}</form>
                            
                           </td>
                         </tr>

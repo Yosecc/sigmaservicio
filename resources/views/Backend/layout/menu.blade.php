@@ -11,22 +11,22 @@
     
     <li id="slider" class="nav-item">
       <a class="nav-link" href="{{ route('admin.categoria.index')}}">
-        <i class="material-icons">view_carousel</i>
-        <p>Categoria</p>
+        <i class="material-icons">list_alt</i>
+        <p>Categorías</p>
       </a>
     </li>
 
     
     <li id="slider" class="nav-item">
       <a class="nav-link" href="{{ route('admin.marca.index')}}">
-        <i class="material-icons">view_carousel</i>
+        <i class="material-icons">label</i>
         <p>Marcas</p>
       </a>
     </li>
 
     <li id="slider" class="nav-item">
       <a class="nav-link" href="{{ route('admin.servicio.index')}}">
-        <i class="material-icons">view_carousel</i>
+        <i class="material-icons">view_module</i>
         <p>Servicios</p>
       </a>
     </li>

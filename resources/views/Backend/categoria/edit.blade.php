@@ -8,7 +8,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header card-header-primary">
-          <h4 class="card-title">Actualizar Categoria</h4>
+          <h4 class="card-title">Actualizar Categoría</h4>
           <p class="card-category">Complete todos los datos</p>
         </div>
         <div class="card-body">
