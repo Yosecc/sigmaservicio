@@ -29,13 +29,13 @@
 	<meta property="og:updated_time" content="1440432930" /> 
 	<meta property="og:title" content="@isset ($title) {{ $title }} @endisset" /> 
 	<meta property="og:description" content="@isset ($descripcion) {{ $descripcion }} @endisset" /> 
-	<meta property="og:image" itemprop="image" content="{{ asset('frontend/images/logo.png') }}"> 
+	<meta property="og:image" itemprop="image" content="{{ asset('frontend/images/icon.png') }}"> 
 	<meta property="og:url" content="@isset ($meta_url) {{ $meta_url }} @endisset"/>
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:url" contnet="@isset ($meta_url) {{ $meta_url }} @endisset">
 	<meta name="twitter:title" content="@isset ($title) {{ $title }} @endisset">
 	<meta name="twitter:description" content="@isset ($descripcion) {{ $descripcion }} @endisset">
-	<meta name="twitter:image" content="{{ asset('frontend/images/logo.png') }}">
+	<meta name="twitter:image" content="{{ asset('frontend/images/icon.png') }}">
 
 
 
