@@ -92,7 +92,7 @@
               </li>
             </ul>
           </nav>
-          <div class="copyright float-right">
+          <div class="copyright float-right" style="color: black">
             &copy;
             <script>
               document.write(new Date().getFullYear())

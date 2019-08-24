@@ -1,37 +1,37 @@
-modalServicio()
+// modalServicio()
 
-function modalServicio(){
-	$(document).on('click', '.item-servicio', function(event){
-		id = $(this).data('id')
-    console.log('el id= '+id)
-			$('.nombre-servicio-modal').html('')
-     		$('.texto-servicio-modal').html('')
+// function modalServicio(){
+// 	$(document).on('click', '.item-servicio', function(event){
+// 		id = $(this).data('id')
+//     console.log('el id= '+id)
+// 			$('.nombre-servicio-modal').html('')
+//      		$('.texto-servicio-modal').html('')
        
-	 	$.ajax({
-            url: route('servicio-ajax',id),
-            type: "get",
-            dataType: "json",
-            // data: {id:id},
-            cache: false,
-            contentType: false,
-            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-     		// processData: false,
-     		beforeSend: function() {
+// 	 	$.ajax({
+//             url: route('servicio-ajax',id),
+//             type: "get",
+//             dataType: "json",
+//             // data: {id:id},
+//             cache: false,
+//             contentType: false,
+//             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+//      		// processData: false,
+//      		beforeSend: function() {
      			
-    		},
-     		success: function(data) {
-          // console.log(data)
-     			$('.nombre-servicio-modal').html(data.servicio.nombre)
-     			$('.texto-servicio-modal').html(data.servicio.texto)
+//     		},
+//      		success: function(data) {
+//           // console.log(data)
+//      			$('.nombre-servicio-modal').html(data.servicio.nombre)
+//      			$('.texto-servicio-modal').html(data.servicio.texto)
 
                 
-            },
-            error: function(data){
-              // console.log(data)
-            },
-        })	
-	})   
-}
+//             },
+//             error: function(data){
+//               // console.log(data)
+//             },
+//         })	
+// 	})   
+// }
 
 scrolMenu()
 

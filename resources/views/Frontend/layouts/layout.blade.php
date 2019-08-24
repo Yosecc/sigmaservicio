@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/bootstrap4/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 <link href="{{ asset('frontend/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css') }}" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
@@ -139,20 +139,23 @@
 
 {{-- </body> --}}
 
-<script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}"></script>
-<script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
-<script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
+<script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}" async defer></script>
+
+{{-- <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script> --}}
+{{-- <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script> --}}
 <script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/greensock/TimelineMax.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/scrollmagic/ScrollMagic.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/greensock/animation.gsap.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/greensock/ScrollToPlugin.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/progressbar/progressbar.min.js') }}"></script>
-<script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+
 <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
 @routes
+<script src="{{ asset('js/app.js') }}" ></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+<script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
 
 </body>
 </html>

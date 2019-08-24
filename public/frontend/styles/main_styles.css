@@ -51,6 +51,21 @@ COLOR PALETTE
 	background: #ff4200; 
 	border: 2px solid #ff4200 ; 
 }*/
+.cont-servicio{
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+}
+.btn-filter {
+	background: rgba(255,255,255,.9);
+	border-radius: 0px;
+	color: black;
+	margin: 10px;
+	font-size: 1.2rem;
+}
+
 .input-news {
 	border-radius: 0px;
 	height: 50px;

@@ -7,6 +7,13 @@
 		<!-- Features -->
 		@include('Frontend.template.features')
 		<!-- Services -->
+		<div id="app">
+			<services
+			:categorias="{{ json_encode($categorias) }}"
+			:servicios="{{ json_encode($servicios) }}"
+			:asset="'{{ asset(Storage::url('')) }}'"
+			></services>
+		</div>
 		@include('Frontend.template.services')	
 		<!-- Testimonials -->
 		@include('Frontend.template.testimonials')	

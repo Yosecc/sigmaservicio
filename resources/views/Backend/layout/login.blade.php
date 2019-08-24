@@ -48,12 +48,12 @@
               </li>
           </ul>
         </nav> --}}
-        <div class="copyright float-right" >
+        <div class="copyright float-right text-black" >
             &copy;
             <script>
                 document.write(new Date().getFullYear())
             </script>, hecho con <i class="material-icons">favorite</i> por
-            <a href="https://www.creative-tim.com" target="_blank">TIFYCA</a>.
+            <a href="" target="_blank">TIFYCA</a>.
         </div>
     </div>
 </footer>
