@@ -37,7 +37,7 @@ COLOR PALETTE
 
 ******************************/
 /*.btn-service{
-	border: 2px solid #ff4200 ; 
+	border: 2px solid #2A2865 ; 
 	background: transparent; 
 	color:black; 
 	border-radius: 4px;
@@ -48,8 +48,8 @@ COLOR PALETTE
 	-ms-transition: 0.5s all;
 }
 .btn-service:hover{
-	background: #ff4200; 
-	border: 2px solid #ff4200 ; 
+	background: #2A2865; 
+	border: 2px solid #2A2865 ; 
 }*/
 .cont-servicio{
 	transition: 0.5s all;
@@ -215,7 +215,7 @@ p a:hover::after
 ::selection
 {
 	background: #fde0db;
-	color: #ff4200;
+	color: #2A2865;
 }
 p::selection
 {
@@ -458,12 +458,12 @@ section
 	position: absolute;
 	top: 0;
 	left: -5px;
-	color: #ff4200;
+	color: #2A2865;
 	z-index: -1;
 }
 .logo span:last-of-type
 {
-	color: #ff4200;
+	color: #2A2865;
 }
 
 /*********************************
@@ -704,7 +704,7 @@ section
 	position: absolute;
 	top: -1px;
 	left: -5px;
-	color: #ff4200;
+	color: #2A2865;
 	z-index: -1;
 }
 .fs_menu_list li a > span::after
@@ -893,7 +893,7 @@ section
 }
 .main_slider_nav:hover i
 {
-	color: #ff4200;
+	color: #2A2865;
 }
 
 /*********************************
@@ -1091,7 +1091,7 @@ section
 }
 .section_title_dark h2::before
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 .testimonials_container
 {
@@ -1159,14 +1159,14 @@ section
 {
 	font-size: 15px;
 	font-weight: 400;
-	color: #ff4200;
+	color: #2A2865;
 	margin-top: -5px;
 }
 .test_quote
 {
 	font-size: 30px;
 	line-height: 1;
-	color: #ff4200;
+	color: #2A2865;
 	font-style: italic;
 	margin-top: 15px;
 }
@@ -1212,7 +1212,7 @@ section
 }
 .test_slider_nav:hover
 {
-	background: #ff4200;
+	background: #2A2865;
 }
 .test_slider_nav:hover i
 {
@@ -1221,7 +1221,7 @@ section
 .test_slider_nav i
 {
 	font-size: 18px;
-	color: #ff4200;
+	color: #2A2865;
 }
 .test_slider_nav_left
 {

@@ -74,7 +74,7 @@
             }
         },
         created(){
-             console.log(this.asset)
+             // console.log(this.asset)
 
         },
         methods:{
