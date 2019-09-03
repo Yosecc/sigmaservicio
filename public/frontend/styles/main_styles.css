@@ -163,6 +163,10 @@ div
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.cont-modal ul{
+	list-style: inherit;
+	margin-left: 40px;
+}
 ul
 {
 	list-style: none;

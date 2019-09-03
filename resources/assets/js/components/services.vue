@@ -25,13 +25,13 @@
                             Todo
                     </button>
                 </div>
-                <div class="row align-items-end">
+                <div class="row align-items-end d-flex align-items-stretch">
 
                     <div    v-show="selected == servicio.categorias_id || selected == 0" 
                             v-for="servicio in servicios" 
-                            class="col-lg-4 col-sm-6 mt-3 cont-servicio"
+                            class="col-lg-4 col-sm-6 mt-3 cont-servicio align-self-stretch"
                             >
-                        <div class="card border-0" style="overflow: hidden; box-shadow: 5px 5px 5px black; border-radius: 0px">
+                        <div class="card  border-0" style="overflow: hidden; box-shadow: 5px 5px 5px black; border-radius: 0px; height: 100%">
                             <div class="features_item d-flex flex-column align-items-center justify-content-end text-center">
                                 <div class="overlay">
                                     <div class="row h-100">
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <modal :show="true" :config="{closeOnBgClick:true}" ref="modal">
-                <div v-html="contenido" style="background: white; padding:0.25em 1em;">
+                <div v-html="contenido" style="background: white; padding:0.25em 1em;" class="cont-modal">
 
                 </div>
             </modal>
