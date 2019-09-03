@@ -138,15 +138,13 @@
 
 
 {{-- </body> --}}
+<script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}" ></script>
+<script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script>
+<script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script>
 @routes
 <script src="{{ asset('js/app.js') }}" ></script>
-{{-- <script src="{{ asset('frontend/js/jquery-3.2.1.min.js') }}" async defer></script> --}}
 <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
 <script src="{{ asset('frontend/js/custom.js') }}"></script>
-
-
-{{-- <script src="{{ asset('frontend/styles/bootstrap4/popper.js') }}"></script> --}}
-{{-- <script src="{{ asset('frontend/styles/bootstrap4/bootstrap.min.js') }}"></script> --}}
 <script src="{{ asset('frontend/plugins/greensock/TweenMax.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/greensock/TimelineMax.min.js') }}"></script>
 <script src="{{ asset('frontend/plugins/scrollmagic/ScrollMagic.min.js') }}"></script>

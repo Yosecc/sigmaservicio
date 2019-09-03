@@ -3,23 +3,14 @@
 @section('content')
 
 <input id="mostra_vista" value="comentarios" hidden disabled>
-<script src="{{ asset('js/core/jquery.min.js') }}"></script>
+
 <script>
-$(document).ready(function(){
-CKEDITOR.replace( 'editor',{
-uiColor:"#DCDCDC",
-toolbarGroups : [
-  { name: 'basicstyles', groups: [ 'basicstyles'] },
-  { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
-  { name: 'document',	   groups: [ 'doctools' ] },
-  { name: 'editing',     groups: ['spellchecker' ] },
-  { name: 'styles' },
-  { name: 'colors' },
-  { name: 'tools' }
-]
-// removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
-});
-});
+
+
+
+// $('#imagenup').change(function(event) {
+//   console.log('entra')
+// })
 </script>
 <div class="row">
     <div class="col-md-12">
@@ -79,7 +70,7 @@ toolbarGroups : [
                     <span class="fileinput-new no-existente">Buscar</span>
                     <span class="fileinput-exists existente">Cambiar</span>
 
-                    <input id="imagenup" name="url_imagen" type="file" value="{{$comentario->url_imagen}}" href="{{$comentario->url_imagen}}" accept="image/png, .jpeg, .jpg, image/gif" >
+                    <input id="imagenup" name="url_imagen" class="ifi" type="file" value="{{$comentario->url_imagen}}" href="{{$comentario->url_imagen}}" accept="image/png, .jpeg, .jpg, image/gif" >
 
                     @if ($errors->has('url_imagen'))
                         <span class="help-block">
@@ -87,7 +78,8 @@ toolbarGroups : [
                         </span>
                     @endif
                   </span>
-                  <a href="#" class="btn btn-danger btn-round fileinput-exists quitarexistente" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</a>
+                  <button type="button" class="btn btn-danger btn-round  d-none fileinput-exists quitarexistente" id="quitar" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</button>
+                  {{-- <a href="#" class="btn btn-danger btn-round  d-none fileinput-exists quitarexistente" id="quitar" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</a> --}}
                 </div>
               </div>
             </div>
@@ -101,3 +93,34 @@ toolbarGroups : [
     </div>
   </div>
 @endsection
+@push('scripts')
+
+<script  type="text/javascript" charset="utf-8" >
+
+$(document).ready(function(){
+  CKEDITOR.replace( 'editor',{
+    uiColor:"#DCDCDC",
+    toolbarGroups : [
+      { name: 'basicstyles', groups: [ 'basicstyles'] },
+      { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
+      { name: 'document',    groups: [ 'doctools' ] },
+      { name: 'editing',     groups: ['spellchecker' ] },
+      { name: 'styles' },
+      { name: 'colors' },
+      { name: 'tools' }
+    ]
+    // removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
+    });
+});
+ $('.ifi').change(function(event) {
+  $('#quitar').removeClass('d-none')
+})
+
+$(document).on('click','#quitar',function(event){
+    $('#quitar').addClass('d-none')
+})
+</script>
+
+
+
+@endpush

@@ -19,8 +19,8 @@
 											<p class="pt-2">Solicita tu Cotización</p>
 										</a> --}}
 										<button type="button" class="btn btn-primary border-0 mt-5 p-3" style="border-radius: 0px;background: #2A2865" data-toggle="modal" data-target="#exampleModal">
- Solicita tu Cotización
-</button>
+										 Solicita tu Cotización
+										</button>
 										{{-- <a href="#" class="d-flex flex-row align-items-center justify-content-center">Solicita tu Cotización<img src="{{ asset('frontend/images/arrow_right.svg') }}" alt=""></a> --}}
 									{{-- </div> --}}
 								</div>
