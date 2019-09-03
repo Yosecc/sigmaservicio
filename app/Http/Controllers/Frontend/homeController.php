@@ -22,7 +22,7 @@ class homeController extends Controller{
     	$slider = Sliders::where('publico',1)->orderBy('posicion','asc')->get();
     	$categorias = Categorias::where('publico',1)->orderBy('posicion','asc')->get();
       
-    	$servicios =Servicios::where('publico',1)->orderBy('posicion','desc')->get();
+    	$servicios =Servicios::where('publico',1)->orderBy('posicion','asc')->get();
     	$comentarios = Comentarios::all();
     	$marcas = Marcas::where('publico',1)->orderBy('posicion','asc')->get();
 

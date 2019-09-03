@@ -66,8 +66,8 @@
           <div class="row">
             <div class="col-md-2">
               <div class="form-group bmd-form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                {!! Form::label('posicion', 'Categoria') !!} 
-                <select class="form-control" name="categorias_id" required>
+                {!! Form::label('categorias_id', 'Categoria') !!} 
+                <select class="form-control" name="categorias_id" id="categorias_id" required>
                   @foreach(App\Categorias::all() as $categoria)
                   @if ($loop->first)
                   <option value="{{$categoria->id}}" selected="selected">{{$categoria->titulo}}</option>
