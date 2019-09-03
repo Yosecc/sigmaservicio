@@ -65,8 +65,8 @@
           <div class="row">
             <div class="col-md-2">
               <div class="form-group bmd-form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                {!! Form::label('posicion', 'Categoria') !!} 
-                <select class="form-control" name="categorias_id" required>
+                {!! Form::label('categorias_id', 'Categoria') !!} 
+                <select class="form-control" name="categorias_id" id="categorias_id" required style="height: 60px">
                   @foreach(App\Categorias::all() as $categoria)
                   @if ( $categoria->id == $servicio->categorias_id)
                   <option value="{{$categoria->id}}" selected="selected">{{$categoria->titulo}}</option>
@@ -82,12 +82,12 @@
                 @endif
               </div>
             </div>
-          </div>
-          <div class="row">
+       
             <div class="col-md-2">
               <div class="form-group bmd-form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                 {!! Form::label('posicion', 'Posición') !!}
-                <select class="form-control" name="posicion" required>
+                <input type="number" value="{{$servicio->posicion}}"  name="posicion" class="form-control" style="height: 60px">
+               {{--  <select class="form-control" name="posicion" required>
                   @foreach(App\Servicios::all() as $posicion)
                   @if($posicion->id == $servicio->id)
                   <option value="{{$posicion->posicion}}" selected="selected">{{$posicion->posicion}}</option>
@@ -95,7 +95,7 @@
                   <option value="{{$posicion->posicion}}">{{$posicion->posicion}}</option>
                   @endif
                   @endforeach
-                </select>
+                </select> --}}
                 @if ($errors->has('posicion'))
                     <span class="help-block">
                         <strong>{{ $errors->first('posicion') }}</strong>
