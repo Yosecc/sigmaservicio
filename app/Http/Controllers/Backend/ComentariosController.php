@@ -79,13 +79,14 @@ class ComentariosController extends Controller
 
           $comentario = Comentarios::find($id)
                     ->fill($request->input());
-          if($request->hasFile('url_imagen')){
-            $nombreArchivo = "img_comentario";
-            $archivo_img = $nombreArchivo."_".time().'.'.$request["url_imagen"]->getClientOriginalExtension();
-                    $path = public_path().'/images/comentarios/';
-                    $request["url_imagen"]->move($path, $archivo_img);
-            $comentario->url_imagen = $archivo_img;
-          }
+
+           $archivo_nombre =Str::slug($request->nombre, '-');
+            $archivo_nombre = $archivo_nombre.'-'.Carbon::now()->format('Ymd');
+            
+            if ($request->hasFile('url_imagen')) {
+                    $img = Storage::putFileAs('public/comentarios', new File($request->url_imagen), $archivo_nombre.'.'.$request->url_imagen->getClientOriginalExtension());
+                   $comentario->url_imagen = $img;
+                }
           $comentario->role_user_id = Auth::id();
           $comentario->save()
           ;
