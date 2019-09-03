@@ -4,23 +4,7 @@
 
 <input id="mostra_vista" value="comentarios" hidden disabled>
 <script src="{{ asset('js/core/jquery.min.js') }}"></script>
-<script>
-$(document).ready(function(){
-CKEDITOR.replace( 'editor',{
-uiColor:"#DCDCDC",
-toolbarGroups : [
-  { name: 'basicstyles', groups: [ 'basicstyles'] },
-  { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
-  { name: 'document',	   groups: [ 'doctools' ] },
-  { name: 'editing',     groups: ['spellchecker' ] },
-  { name: 'styles' },
-  { name: 'colors' },
-  { name: 'tools' }
-]
-// removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
-});
-});
-</script>
+
 <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -71,21 +55,22 @@ toolbarGroups : [
             <div class="col-md-4 col-sm-4">
               <h4 class="title {{ $errors->has('url_imagen') ? ' has-error' : '' }}">Subir Imagen</h4>
               <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                <div class="fileinput-new thumbnail">
+                <div class="fileinput-new thumbnail" id="defaultimg">
                   <img src="{{URL::to('/material-dashboard-dark-edition-v2.1.0/assets')}}/img/image_placeholder.jpg" alt="...">
                 </div>
                 <div class="fileinput-preview fileinput-exists thumbnail" style=""></div>
                 <div>
                   <span class="btn btn-rose btn-round btn-file">
                     <span class="fileinput-new">Buscar</span>
-                    <span class="fileinput-exists">Cambiar</span><input id="imagen" name="url_imagen" type="file" name="..." required>
+                    <span class="fileinput-exists">Cambiar</span>
+                    <input id="imagen" name="url_imagen" type="file" class="ifi" required>
                     @if ($errors->has('url_imagen'))
                         <span class="help-block">
                             <strong>{{ $errors->first('url_imagen') }}</strong>
                         </span>
                     @endif
                   </span>
-                  <a href="#" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</a>
+                   <button type="button" class="btn btn-danger btn-round  d-none fileinput-exists quitarexistente" id="quitar" data-dismiss="fileinput"><i class="fa fa-times"></i>Quitar</button>
                 </div>
               </div>
             </div>
@@ -101,3 +86,37 @@ toolbarGroups : [
   </div>
 
 @endsection
+
+@push('scripts')
+
+<script  type="text/javascript" charset="utf-8" >
+
+$(document).ready(function(){
+  CKEDITOR.replace( 'editor',{
+    uiColor:"#DCDCDC",
+    toolbarGroups : [
+      { name: 'basicstyles', groups: [ 'basicstyles'] },
+      { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
+      { name: 'document',    groups: [ 'doctools' ] },
+      { name: 'editing',     groups: ['spellchecker' ] },
+      { name: 'styles' },
+      { name: 'colors' },
+      { name: 'tools' }
+    ]
+    // removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
+    });
+});
+ $('.ifi').change(function(event) {
+  $('#quitar').removeClass('d-none')
+  $('#defaultimg').addClass('d-none')
+})
+
+$(document).on('click','#quitar',function(event){
+    $('#quitar').addClass('d-none')
+    $('#defaultimg').removeClass('d-none')
+})
+</script>
+
+
+
+@endpush

@@ -9,12 +9,7 @@
                     </div>
 
                 <div class="d-flex justify-content-center align-items-center flex-wrap">
-                    <button  class="btn-filter btn btn-primary" 
-                            @click="selectCategoria(0)" 
-                            :class="{ active : selected == 0}" 
-                            type="button">
-                            Todo
-                    </button>
+                    
                     <button 
                         v-for="categoria in categorias" 
                         @click="selectCategoria(categoria.id)" 
@@ -22,6 +17,12 @@
                         class=" btn-filter btn btn-primary" 
                         type="button">
                         {{ categoria.titulo }}
+                    </button>
+                    <button  class="btn-filter btn btn-primary" 
+                            @click="selectCategoria(0)" 
+                            :class="{ active : selected == 0}" 
+                            type="button">
+                            Todo
                     </button>
                 </div>
                 <div class="row align-items-end">
@@ -69,13 +70,11 @@
         },
         data(){
             return{
-                selected: 0,
+                selected: this.categorias[0].id,
                 contenido: '',
             }
         },
         created(){
-             // console.log(this.asset)
-
         },
         methods:{
             selectCategoria(id){
