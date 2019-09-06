@@ -22,7 +22,6 @@
 							<li><b>Teléfono:</b> (507)3905455</li>
 							<li><b>Celular:</b> 68254912</li>
 							<li><b>Correos:</b> sigmaserviciopanama@gmail.com</li>
-							<li><b>Dirección:</b> sigmaservicio@gmail.com</li>
 							<li><b>Dirección:</b> Esta sera Provisional ya que este mes me estaré mudando.
 							<br>Via Centenario, Altamira Gardens FN-204.</li>
 						</ul>
