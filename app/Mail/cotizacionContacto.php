@@ -38,7 +38,7 @@ class cotizacionContacto extends Mailable
         $telefono= $this->telefono;
         $servicio= $this->servicio;
 
-        return $this->from('sigmapanamaventas@gmail.com')
+        return $this->from('sigmaservicioweb@gmail.com')
                     ->view('Frontend.mail.cotizacionContacto')
                     ->with([
                             'nombres' => $nombres,
