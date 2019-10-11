@@ -59,9 +59,9 @@ class homeController extends Controller{
          $servicio = Servicios::where('id',$request->servicio)->first();
 
          $servicio = $servicio->nombre;
-           $correo_jefe='yosec.cervino@gmail.com';
+           // $correo_jefe='yosec.cervino@gmail.com';
 
-          // $correo_jefe='sigmapanamaventas@gmail.com';
+          $correo_jefe='sigmapanamaventas@gmail.com';
           Mail::to($correo_jefe)->send(new cotizacionContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           Mail::to($request->email)->send(new userContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           return response()->json(['servicio' => $servicio]);

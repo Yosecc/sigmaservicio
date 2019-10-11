@@ -39,7 +39,7 @@ class userContacto extends Mailable
         $telefono= $this->telefono;
         $servicio= $this->servicio;
 
-        return $this->from('enviolaravelmail@gmail.com')
+        return $this->from('sigmaservicioweb@gmail.com')
                     ->view('Frontend.mail.userContacto')
                     ->with([
                             'nombres' => $nombres,
