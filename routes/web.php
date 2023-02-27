@@ -32,6 +32,10 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset'); 
 Route::post('form-contacto','Frontend\homeController@form_contacto')->name('form_contacto');
+Route::post('sugerenciasreclamos','Frontend\homeController@sugerenciasReclamos')->name('sugerenciasreclamos');
+
+
+
 Route::get('servicio-ajax/{id}', 'Frontend\homeController@servicio_ajax')->name('servicio-ajax');
 Route::post('form_cotizacion','Frontend\homeController@form_cotizacion')->name('form_cotizacion');
 

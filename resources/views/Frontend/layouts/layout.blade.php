@@ -37,8 +37,7 @@
 	<meta name="twitter:description" content="@isset ($descripcion) {{ $descripcion }} @endisset">
 	<meta name="twitter:image" content="{{ asset('frontend/images/icon.png') }}">
 
-
-
+	
 {{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}
 </head>
 
@@ -65,8 +64,10 @@
 				<li class="active"><a href="#home"><span>Inicio</span></a></li>
 				<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
 				<li><a href="#servicios"><span>Servicios</span></a></li>
+
+				<li><a href="" data-toggle="modal" data-target="#modalSugerencias"><span>Reclamos y Sugerencias</span></a></li>
+		
 				<li><a href="#contacto"><span>Contáctos</span></a></li>
-				{{-- <li><a href="#"><span>blog</span></a></li> --}}
 				{{-- <li><a href="#"><span>contact</span></a></li> --}}
 			</ul>
 		</nav>
@@ -81,60 +82,126 @@
 
 	<!-- Menu -->
 
-	<div class="fs_menu_overlay"></div>
-	<div class="fs_menu_container">
-		<div class="fs_menu_shapes"><img src="{{ asset('frontend/images/menu_shapes.png') }}" alt=""></div>
-		<nav class="fs_menu_nav">
-			<ul class="fs_menu_list">
-				<li class=""><a href="#home"><span>Inicio</span></a></li>
-				<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
-				<li><a href="#servicios"><span>Productos</span></a></li>
-				<li><a href="#contacto"><span>Contáctos</span></a></li>
-			</ul>
-		</nav>
-		<div class="fs_social_container d-flex flex-row justify-content-end align-items-center">
-			<ul class="fs_social">
-				{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
-				<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
-				{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
-				<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
-				{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
-				{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
-				{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
-			</ul>
-		</div>
-	</div>
-
-	@yield('content')	
-
-	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row footer_content d-flex flex-sm-row flex-column align-items-center">
-				<div class="col-sm-6 cr text-sm-left text-center">
-					<p>
-						Hecho con <i class="fa fa-heart" aria-hidden="true"></i> por Tifyca</a>
-					</p>
+		<!-- Modal -->
+		<div class="modal fade modal-style " id="modalSugerencias" tabindex="-1" role="dialog" aria-labelledby="modalSugerencias" aria-hidden="true">
+			<div class="modal-dialog col-6" role="document" >
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 				</div>
-				<div class="col-sm-6 text-sm-right text-center">
-					<div class="footer_social_container">
-						<ul class="footer_social">
-							{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
-							<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
-							{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
-							<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
-							{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
-							{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
-							{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
-						</ul>
+				<div class="modal-body">
+					<img src="{{ asset('frontend/images/check.gif') }}" class="img-fluid gif-check" id="check2-s" style="display: none" alt="">
+					<form action="" method="POST" id="contact-form-sugerencia">
+						{{ csrf_field() }}
+						<div class="row " id="cont-form2-s">
+							<div class="form-group col-12">
+								<label for="nombre" >Nombre y apellido</label>
+								<input type="text" class="form-control " name="nombre" id="nombre-sugerencia" placeholder="Ej. Jhon Smit">
+			
+									<div class="invalid-feedback invalid-nombre">
+			
+									</div>
+			
+							</div>
+							<div class="form-group col-12">
+								<label for="telefono" >Teléfono</label>
+								<input type="text" class="form-control " name="telefono" id="telefono-sugerencia" placeholder="Ej. 00055500">
+			
+									<div class="invalid-feedback invalid-telefono">
+			
+									</div>
+			
+							</div>
+							<div class="form-group col-12">
+								<label for="email" >Correo Electrónico</label>
+								<input type="text" class="form-control" name="email" id="email-sugerencia" placeholder="example@mail.com">
+			
+									<div class="invalid-feedback invalid-email">
+			
+									</div>
+			
+							</div>
+							<div class="form-group col-12">
+								<label for="mensaje" >Reclamo o sugerencia</label>
+								<textarea name="mensaje" id="mensaje-sugerencia" class="form-control "></textarea>
+			
+									<div class="invalid-feedback invalid-mensaje">
+			
+									</div>
+			
+							</div>
+
+						</div>
+					</div>
+						<div class="modal-footer">
+						{{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+						<button type="submit" class="btn btn-primary submit-s">Enviar</button>
+						<img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading2-s" style="display: none" alt="">
+					</form>
+				</div>
+		
+			</div>
+			</div>
+		</div>
+
+		<div class="fs_menu_overlay"></div>
+		<div class="fs_menu_container">
+			<div class="fs_menu_shapes"><img src="{{ asset('frontend/images/menu_shapes.png') }}" alt=""></div>
+			<nav class="fs_menu_nav">
+				<ul class="fs_menu_list">
+					<li class=""><a href="#home"><span>Inicio</span></a></li>
+					<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
+					<li><a href="#servicios"><span>Servicios</span></a></li>
+					<li><a href="#sugerencias"><span>Reclamos y Sugerencias</span></a></li>
+					<li><a href="#contacto"><span>Contáctos</span></a></li>
+				</ul>
+			</nav>
+			<div class="fs_social_container d-flex flex-row justify-content-end align-items-center">
+				<ul class="fs_social">
+					{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
+					<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
+					{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
+					<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
+					{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
+					{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
+					{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
+				</ul>
+			</div>
+		</div>
+
+		@yield('content')	
+
+		<!-- Footer -->
+
+		<footer class="footer">
+			<div class="container">
+				<div class="row footer_content d-flex flex-sm-row flex-column align-items-center">
+					<div class="col-sm-6 cr text-sm-left text-center">
+						<p>
+							Hecho con <i class="fa fa-heart" aria-hidden="true"></i> por Tifyca</a>
+						</p>
+					</div>
+					<div class="col-sm-6 text-sm-right text-center">
+						<div class="footer_social_container">
+							<ul class="footer_social">
+								{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
+								<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
+								{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
+								<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
+								{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
+								{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
+								{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
 
-</div>
+	</div>
 
 
 {{-- </body> --}}
@@ -156,6 +223,67 @@
 
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 <script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+
+	<script>
+
+		function limpiarCampos(){
+			$('#nombre-sugerencia').val('')
+			$('#telefono-sugerencia').val('')
+			$('#email-sugerencia').val('')
+			$('#mensaje-sugerencia').val('')
+		}
+
+		limpiarCampos()
+		$('#contact-form-sugerencia').submit(function(event) {
+			event.preventDefault()
+			var f = $(this);
+			var formData = new FormData(document.getElementById("contact-form-sugerencia"));
+
+			console.log(formData)
+			$.ajax({
+				url: 'sugerenciasreclamos',
+				type: "post",
+				dataType: "json",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+					$('div[class^="invalid-"').html('')
+					$('.form-control').removeClass('is-invalid')
+					$('.submit-s').fadeOut(1000)
+					$('#loading2-s').fadeIn(1000)
+				},
+				success: function(data) {
+					
+					$('#cont-form2-s').fadeOut(1000)
+					$('#check2-s').fadeIn(1000);
+					$('.submit-s').fadeIn(1000)
+					$('#loading2-s').fadeOut(1000)
+					limpiarCampos()
+				},
+				error: function(data) {
+					if(data.responseJSON == undefined){
+						$('#cont-form2-s').fadeOut(1000)
+						$('#check2-s').fadeIn(1000);
+						$('.submit-s').fadeIn(1000)
+						$('#loading2-s').fadeOut(1000)
+						limpiarCampos()
+					}else{
+						
+						$('.submit-s').fadeIn(1000)
+						$('#loading2-s').fadeOut(1000)
+						error = data.responseJSON.errors
+						
+						$.each(error, function(key, value) {
+								$('#' + key + '-sugerencia').addClass('is-invalid')
+								$('.invalid-' + key).html(value)
+							});
+					}
+				},
+			})
+		});
+	</script>
 
 </body>
 </html>

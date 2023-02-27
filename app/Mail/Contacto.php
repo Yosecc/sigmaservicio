@@ -34,7 +34,7 @@ class Contacto extends Mailable
         $mail    =$request['mail'];
         $mensaje =$request['mensaje'];
 
-        return $this->from('info@consuljuridica.com')
+        return $this
                     ->view('Frontend.Mail.contacto')
                     ->with([
                             'name' => $name,

@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use DB;
+use Mail;
+use App\Marcas;
 use App\Sliders;
 use App\Servicios;
 use App\Categorias;
 use App\Comentarios;
-use App\Marcas;
-use DB;
-use Mail;
-use App\Mail\userContacto;
 use App\Mail\jefeContacto;
+use App\Mail\userContacto;
+use Illuminate\Http\Request;
 use App\Mail\cotizacionContacto;
+use App\Mail\ReclamosSugerencias;
+use App\Http\Controllers\Controller;
 
 class homeController extends Controller{
 
@@ -39,10 +40,8 @@ class homeController extends Controller{
 					    ]);
 
 
-    	 $this->send_email($request->nombre_empresa,$request->telefono,$request->email,$request->mensaje);
-
-
-          return response()->json(['servicio' => $request->mensaje]);
+    	  $this->send_email($request->nombre_empresa,$request->telefono,$request->email,$request->mensaje);
+        return response()->json(['servicio' => $request->mensaje]);
 
     }
 
@@ -61,22 +60,40 @@ class homeController extends Controller{
          $servicio = $servicio->nombre;
            // $correo_jefe='yosec.cervino@gmail.com';
 
-          $correo_jefe='sigmapanamaventas@gmail.com';
+          // $correo_jefe='sigmapanamaventas@gmail.com';
+
+          $correo_jefe='ventas@sigmaservicio.com';
           Mail::to($correo_jefe)->send(new cotizacionContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           Mail::to($request->email)->send(new userContacto($request->nombre_empresa,$request->telefono,$request->email,$servicio));
           return response()->json(['servicio' => $servicio]);
 
     }
 
+
+    public function sugerenciasReclamos(Request $request)
+    {
+
+      $validatedData = $request->validate([
+        'nombre' => 'required|max:255',
+        'telefono' => 'required|digits_between:8,12',
+        'email' => 'required|email',
+        'mensaje' => 'required',
+      ]);
+
+      // dd($request->all());
+      //sugerencias@sigmaservicio.com
+      $correo_jefe='sugerencias@sigmaservicio.com';
+      Mail::to($correo_jefe)->send(new ReclamosSugerencias($request->all()));
+
+    }
+
     private function send_email($nombre,$telefono,$email,$servicio){
         //sigmapanamaventas@gmail.com
-        $correo_jefe='sigmapanamaventas@gmail.com';
+        $correo_jefe='ventas@sigmaservicio.com';
         Mail::to($email)->send(new userContacto($nombre,$email,$telefono,$servicio));
         Mail::to($correo_jefe)->send(new jefeContacto($nombre,$email,$telefono,$servicio));
         
-        return ;
-
-    
+        return;
     }
   
   	public function servicio_ajax($id){

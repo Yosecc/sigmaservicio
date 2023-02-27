@@ -40,7 +40,7 @@ class MailRegistro extends Mailable
                                 ->where('solicitudes.id_tour',$request->id)
                                 ->first();
 
-        return $this->from('info@lariojaautentica.com')
+        return $this
                     ->cc('yosec.cervino@gmail.com')
                     ->view('Frontend.Mail.MailRegistro')
                     ->with([

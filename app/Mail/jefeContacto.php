@@ -41,7 +41,7 @@ class jefeContacto extends Mailable
         $telefono= $this->telefono;
         $servicio= $this->servicio;
 
-        return $this->from('sigmaservicioweb@gmail.com')
+        return $this
                     ->view('Frontend.mail.jefeContacto')
                     ->with([
                             'nombres' => $nombres,
