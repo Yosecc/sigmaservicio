@@ -39,6 +39,12 @@
 
 	
 {{-- <script src="https://kit.fontawesome.com/415e46850c.js"></script> --}}
+
+<style>
+	.nav_items li{
+		margin-left: 15px !important;
+	}
+</style>
 </head>
 
 <body>
@@ -47,7 +53,7 @@
 	
 	<!-- Header -->
 
-	<header class="header d-flex flex-row justify-content-end align-items-center">
+	<header class="header d-flex flex-row justify-content-end align-items-center pr-2">
 
 		<!-- Logo -->
 		<div class="logo_container mr-auto">
