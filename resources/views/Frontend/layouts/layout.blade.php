@@ -84,10 +84,10 @@
 
 		<!-- Modal -->
 		<div class="modal fade modal-style " id="modalSugerencias" tabindex="-1" role="dialog" aria-labelledby="modalSugerencias" aria-hidden="true">
-			<div class="modal-dialog col-6" role="document" >
+			<div class="modal-dialog col-12 col-sm-6" role="document" >
 			<div class="modal-content">
 				<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel"></h5>
+				<h3 class="modal-title" id="exampleModalLabel">Reclamos y Sugerencias</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -155,7 +155,8 @@
 					<li class=""><a href="#home"><span>Inicio</span></a></li>
 					<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
 					<li><a href="#servicios"><span>Servicios</span></a></li>
-					<li><a href="#sugerencias"><span>Reclamos y Sugerencias</span></a></li>
+					{{-- <li><a href="#sugerencias"><span>Reclamos y Sugerencias</span></a></li> --}}
+					<li><a href="" data-toggle="modal" data-target="#modalSugerencias"><span>Reclamos y Sugerencias</span></a></li>
 					<li><a href="#contacto"><span>Contáctos</span></a></li>
 				</ul>
 			</nav>
