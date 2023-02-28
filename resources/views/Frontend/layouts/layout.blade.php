@@ -53,7 +53,7 @@
 		<div class="logo_container mr-auto">
 			<div class="logo col-lg-8 col-10 ">
 				<a href="#">
-					<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid py-4 p-lg-4"  alt="">
+					<img src="{{ asset('frontend/images/logo.png') }}" class="img-fluid p-4"  alt="">
 				</a>
 			</div>
 		</div>
