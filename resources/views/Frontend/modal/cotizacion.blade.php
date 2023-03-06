@@ -44,8 +44,9 @@
 				<input class="form-control " type="email" placeholder="Email" style="background: #fff;border-radius: 0px">
 			</div>		
 			<div class="modal-footer col-12 mt-3" align="center">
+				<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
         		<button type="button" class="btn btn-secondary border-0" data-dismiss="modal" style="border-radius: 0px;">Cancelar</button>
-        		<button type="button" class="btn btn-secondary border-0" style="background: #000;border-radius: 0px;">Enviar Solicitud</button>
+        		<button type="button" class="btn btn-secondary border-0 recap" style="background: #000;border-radius: 0px;">Enviar Solicitud</button>
 			</div>
 		</div>
       </div>

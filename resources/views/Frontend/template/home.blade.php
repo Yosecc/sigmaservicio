@@ -137,7 +137,8 @@
       </div>
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-        <input type="submit" class="btn btn-primary submit-e" name="enviar" value="Guardar">
+		<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
+        <input type="submit" class="btn btn-primary submit-e recap" name="enviar" value="Guardar">
         <img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading" style="display: none" alt="">
         </form>
       </div>

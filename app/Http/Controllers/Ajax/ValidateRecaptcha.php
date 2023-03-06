@@ -9,9 +9,11 @@ class ValidateRecaptcha extends Controller
 {
     public function validates(Request $request)
     {
+
+        // dd($request->all());
         $post = [
-            'secret' => 'Your Secret key',
-            'response' => $_REQUEST['g-recaptcha-response'],
+            'secret' => '6Lf7UNYkAAAAANCieJ0FQRvfpx2RXRrhSTnKiubg',
+            'response' => $request->response,
         ];
         $ch = curl_init();
 
@@ -23,6 +25,7 @@ class ValidateRecaptcha extends Controller
         $server_output = curl_exec($ch);
 
         curl_close ($ch);
-        echo '<pre>'; print_r($server_output); die('ss');
+        
+        return response($server_output);
     }
 }

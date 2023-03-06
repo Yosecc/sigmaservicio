@@ -146,7 +146,7 @@
 						<div class="modal-footer d-flex justify-content-between">
 						{{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
 						<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
-						<button type="submit"  class="btn btn-primary submit-s">Enviar</button>
+						<button type="submit"  class="btn btn-primary submit-s recap">Enviar</button>
 						<img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading2-s" style="display: none" alt="">
 					</form>
 				</div>
@@ -233,12 +233,12 @@
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 <script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-{{-- 6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA public --}}
-{{-- 6Lf7UNYkAAAAANCieJ0FQRvfpx2RXRrhSTnKiubg secret --}}
 
 <script>
+	$('.recap').prop('disabled', true)
+	var validado = false
 function validateCapchat(token){
-	console.log(token)
+	
 
 	$.ajaxSetup({
 	    headers: {
@@ -255,7 +255,18 @@ function validateCapchat(token){
 			},
 			success: function(data) {
 				
-				console.log('data')
+				if(data.success){
+					$('.recap').prop('disabled', false)
+					validado = true
+					setTimeout(function(){
+						$('.recap').prop('disabled', true)
+						validado = false
+					}, 60000)
+				}else{
+					$('.recap').prop('disabled', true)
+					validado = false
+
+				}	
 			},
 			// error: function(data) {
 
@@ -275,49 +286,50 @@ function validateCapchat(token){
 		var f = $(this);
 		var formData = new FormData(document.getElementById("contact-form-sugerencia"));
 
-		console.log(JSON.stringify(formData))
-		$.ajax({
-			url: 'sugerenciasreclamos',
-			type: "post",
-			dataType: "json",
-			data: formData,
-			cache: false,
-			contentType: false,
-			processData: false,
-			beforeSend: function() {
-				$('div[class^="invalid-"').html('')
-				$('.form-control').removeClass('is-invalid')
-				$('.submit-s').fadeOut(1000)
-				$('#loading2-s').fadeIn(1000)
-			},
-			success: function(data) {
-				
-				$('#cont-form2-s').fadeOut(1000)
-				$('#check2-s').fadeIn(1000);
-				$('.submit-s').fadeIn(1000)
-				$('#loading2-s').fadeOut(1000)
-				limpiarCampos()
-			},
-			error: function(data) {
-				if(data.responseJSON == undefined){
+		if(validado){
+			$.ajax({
+				url: 'sugerenciasreclamos',
+				type: "post",
+				dataType: "json",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false,
+				beforeSend: function() {
+					$('div[class^="invalid-"').html('')
+					$('.form-control').removeClass('is-invalid')
+					$('.submit-s').fadeOut(1000)
+					$('#loading2-s').fadeIn(1000)
+				},
+				success: function(data) {
+					
 					$('#cont-form2-s').fadeOut(1000)
 					$('#check2-s').fadeIn(1000);
 					$('.submit-s').fadeIn(1000)
 					$('#loading2-s').fadeOut(1000)
 					limpiarCampos()
-				}else{
-					
-					$('.submit-s').fadeIn(1000)
-					$('#loading2-s').fadeOut(1000)
-					error = data.responseJSON.errors
-					
-					$.each(error, function(key, value) {
-							$('#' + key + '-sugerencia').addClass('is-invalid')
-							$('.invalid-' + key).html(value)
-						});
-				}
-			},
-		})
+				},
+				error: function(data) {
+					if(data.responseJSON == undefined){
+						$('#cont-form2-s').fadeOut(1000)
+						$('#check2-s').fadeIn(1000);
+						$('.submit-s').fadeIn(1000)
+						$('#loading2-s').fadeOut(1000)
+						limpiarCampos()
+					}else{
+						
+						$('.submit-s').fadeIn(1000)
+						$('#loading2-s').fadeOut(1000)
+						error = data.responseJSON.errors
+						
+						$.each(error, function(key, value) {
+								$('#' + key + '-sugerencia').addClass('is-invalid')
+								$('.invalid-' + key).html(value)
+							});
+					}
+				},
+			})
+		}
 	});
 </script>
 
