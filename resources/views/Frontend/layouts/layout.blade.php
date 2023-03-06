@@ -102,6 +102,7 @@
 					<img src="{{ asset('frontend/images/check.gif') }}" class="img-fluid gif-check" id="check2-s" style="display: none" alt="">
 					<form action="" method="POST" id="contact-form-sugerencia">
 						{{ csrf_field() }}
+
 						<div class="row " id="cont-form2-s">
 							<div class="form-group col-12">
 								<label for="nombre" >Nombre y apellido</label>
@@ -142,9 +143,10 @@
 
 						</div>
 					</div>
-						<div class="modal-footer">
+						<div class="modal-footer d-flex justify-content-between">
 						{{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-						<button type="submit" class="btn btn-primary submit-s">Enviar</button>
+						<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
+						<button type="submit"  class="btn btn-primary submit-s">Enviar</button>
 						<img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading2-s" style="display: none" alt="">
 					</form>
 				</div>
@@ -230,67 +232,94 @@
 
 <script src="{{ asset('frontend/js/main.js') }}"></script>
 <script src="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{{-- 6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA public --}}
+{{-- 6Lf7UNYkAAAAANCieJ0FQRvfpx2RXRrhSTnKiubg secret --}}
 
-	<script>
+<script>
+function validateCapchat(token){
+	console.log(token)
 
-		function limpiarCampos(){
-			$('#nombre-sugerencia').val('')
-			$('#telefono-sugerencia').val('')
-			$('#email-sugerencia').val('')
-			$('#mensaje-sugerencia').val('')
-		}
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
 
-		limpiarCampos()
-		$('#contact-form-sugerencia').submit(function(event) {
-			event.preventDefault()
-			var f = $(this);
-			var formData = new FormData(document.getElementById("contact-form-sugerencia"));
+	$.ajax({
+			url: 'validate_recaptcha',
+			type: "post",
+			dataType: "json",
+			data: {
+				response: token
+			},
+			success: function(data) {
+				
+				console.log('data')
+			},
+			// error: function(data) {
 
-			console.log(formData)
-			$.ajax({
-				url: 'sugerenciasreclamos',
-				type: "post",
-				dataType: "json",
-				data: formData,
-				cache: false,
-				contentType: false,
-				processData: false,
-				beforeSend: function() {
-					$('div[class^="invalid-"').html('')
-					$('.form-control').removeClass('is-invalid')
-					$('.submit-s').fadeOut(1000)
-					$('#loading2-s').fadeIn(1000)
-				},
-				success: function(data) {
-					
+			// },
+		})
+}
+	function limpiarCampos(){
+		$('#nombre-sugerencia').val('')
+		$('#telefono-sugerencia').val('')
+		$('#email-sugerencia').val('')
+		$('#mensaje-sugerencia').val('')
+	}
+
+	limpiarCampos()
+	$('#contact-form-sugerencia').submit(function(event) {
+		event.preventDefault()
+		var f = $(this);
+		var formData = new FormData(document.getElementById("contact-form-sugerencia"));
+
+		console.log(JSON.stringify(formData))
+		$.ajax({
+			url: 'sugerenciasreclamos',
+			type: "post",
+			dataType: "json",
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+			beforeSend: function() {
+				$('div[class^="invalid-"').html('')
+				$('.form-control').removeClass('is-invalid')
+				$('.submit-s').fadeOut(1000)
+				$('#loading2-s').fadeIn(1000)
+			},
+			success: function(data) {
+				
+				$('#cont-form2-s').fadeOut(1000)
+				$('#check2-s').fadeIn(1000);
+				$('.submit-s').fadeIn(1000)
+				$('#loading2-s').fadeOut(1000)
+				limpiarCampos()
+			},
+			error: function(data) {
+				if(data.responseJSON == undefined){
 					$('#cont-form2-s').fadeOut(1000)
 					$('#check2-s').fadeIn(1000);
 					$('.submit-s').fadeIn(1000)
 					$('#loading2-s').fadeOut(1000)
 					limpiarCampos()
-				},
-				error: function(data) {
-					if(data.responseJSON == undefined){
-						$('#cont-form2-s').fadeOut(1000)
-						$('#check2-s').fadeIn(1000);
-						$('.submit-s').fadeIn(1000)
-						$('#loading2-s').fadeOut(1000)
-						limpiarCampos()
-					}else{
-						
-						$('.submit-s').fadeIn(1000)
-						$('#loading2-s').fadeOut(1000)
-						error = data.responseJSON.errors
-						
-						$.each(error, function(key, value) {
-								$('#' + key + '-sugerencia').addClass('is-invalid')
-								$('.invalid-' + key).html(value)
-							});
-					}
-				},
-			})
-		});
-	</script>
+				}else{
+					
+					$('.submit-s').fadeIn(1000)
+					$('#loading2-s').fadeOut(1000)
+					error = data.responseJSON.errors
+					
+					$.each(error, function(key, value) {
+							$('#' + key + '-sugerencia').addClass('is-invalid')
+							$('.invalid-' + key).html(value)
+						});
+				}
+			},
+		})
+	});
+</script>
 
 </body>
 </html>

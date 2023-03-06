@@ -38,7 +38,7 @@ Route::post('sugerenciasreclamos','Frontend\homeController@sugerenciasReclamos')
 
 Route::get('servicio-ajax/{id}', 'Frontend\homeController@servicio_ajax')->name('servicio-ajax');
 Route::post('form_cotizacion','Frontend\homeController@form_cotizacion')->name('form_cotizacion');
-
+Route::post('validate_recaptcha','Ajax\ValidateRecaptcha@validates')->name('validate_recaptcha');
 
 // Route::post('contact-form','Frontend\HomeController@mensaje')->name('contact-form');
 
