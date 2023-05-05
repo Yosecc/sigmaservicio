@@ -308,6 +308,8 @@ function validateCapchat(token){
 					$('.submit-s').fadeIn(1000)
 					$('#loading2-s').fadeOut(1000)
 					limpiarCampos()
+					$('.recap').prop('disabled', true)
+					validado = false
 				},
 				error: function(data) {
 					if(data.responseJSON == undefined){
@@ -316,6 +318,8 @@ function validateCapchat(token){
 						$('.submit-s').fadeIn(1000)
 						$('#loading2-s').fadeOut(1000)
 						limpiarCampos()
+						$('.recap').prop('disabled', true)
+					validado = false
 					}else{
 						
 						$('.submit-s').fadeIn(1000)
@@ -327,6 +331,8 @@ function validateCapchat(token){
 								$('.invalid-' + key).html(value)
 							});
 					}
+
+					
 				},
 			})
 		}
