@@ -17,25 +17,28 @@
 			<div class="col-lg-10 offset-lg-1 text-center contact_text">
 				<div class="row">
 					<div class="col-lg-6 text-left text-white">
-						<h3 class="text-white">Panamá:</h3>
+						@isset ($adress1) {!! $adress1 !!} @endisset
+						{{-- <h3 class="text-white">Panamá:</h3>
 						<ul>
 							<li><b>Teléfono:</b> (507)3905455</li>
 							<li><b>Celular:</b> 68254912</li>
 							<li><b>Correos:</b> sigmaserviciopanama@gmail.com</li>
 							<li><b>Dirección:</b> Esta sera Provisional ya que este mes me estaré mudando.
 							<br>Via Centenario, Altamira Gardens FN-204.</li>
-						</ul>
+						</ul> --}}
 
 					</div>
 					<div class="col-lg-6 text-right text-white mt-4">
-						<h3 class="text-white">Venezuela:</h3>
+						@isset ($adress2) {!! $adress2 !!} @endisset
+
+						{{-- <h3 class="text-white">Venezuela:</h3>
 						<ul>
 							<li><b>Local:</b> 58-264-8087469 / +58-264-9350728</li>
 							<li><b>Teléfono:</b> (0058) 264-8087469/ 264-9350728</li>
 							<li><b>Celular:</b> (0058) 424-6160198</li>
 							<li><b>Correo:</b> sigmaservicio@gmail.com</li>
 							<li><b>Dirección: </b>Carretera H, Centro comercial Paraíso, Local Planta Alta.</li>
-						</ul>	
+						</ul>	 --}}
 					</div>
 				</div>
 				<div class="button contact_button">

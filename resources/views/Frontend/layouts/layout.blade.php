@@ -170,13 +170,11 @@
 			</nav>
 			<div class="fs_social_container d-flex flex-row justify-content-end align-items-center">
 				<ul class="fs_social">
-					{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
-					<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
-					{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
-					<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
-					{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
-					{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
-					{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
+					
+					@isset ($twitter)<li><a href="{{ $twitter }}"><i class="fab fa-twitter trans_300"></i></a></li>@endisset
+			@isset ($facebook)<li><a href="{{ $facebook }}"><i class="fab fa-facebook-f trans_300"></i></a></li>@endisset
+			{{--  https://www.facebook.com/SIGMA-SA-109147023255336/--}}
+			@isset ($instagram)<li><a href="{{ $instagram }}"><i class="fab fa-instagram trans_300"></i></a></li> @endisset
 				</ul>
 			</div>
 		</div>
@@ -190,19 +188,16 @@
 				<div class="row footer_content d-flex flex-sm-row flex-column align-items-center">
 					<div class="col-sm-6 cr text-sm-left text-center">
 						<p>
-							Hecho con <i class="fa fa-heart" aria-hidden="true"></i> por Tifyca</a>
+							Hecho con <i class="fa fa-heart" aria-hidden="true"></i></a>
 						</p>
 					</div>
 					<div class="col-sm-6 text-sm-right text-center">
 						<div class="footer_social_container">
 							<ul class="footer_social">
-								{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
-								<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
-								{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
-								<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
-								{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
-								{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
-								{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
+								@isset ($twitter)<li><a href="{{ $twitter }}"><i class="fab fa-twitter trans_300"></i></a></li>@endisset
+			@isset ($facebook)<li><a href="{{ $facebook }}"><i class="fab fa-facebook-f trans_300"></i></a></li>@endisset
+			{{--  https://www.facebook.com/SIGMA-SA-109147023255336/--}}
+			@isset ($instagram)<li><a href="{{ $instagram }}"><i class="fab fa-instagram trans_300"></i></a></li> @endisset
 							</ul>
 						</div>
 					</div>
@@ -308,6 +303,8 @@ function validateCapchat(token){
 					$('.submit-s').fadeIn(1000)
 					$('#loading2-s').fadeOut(1000)
 					limpiarCampos()
+					$('.recap').prop('disabled', true)
+					validado = false
 				},
 				error: function(data) {
 					if(data.responseJSON == undefined){
@@ -316,6 +313,8 @@ function validateCapchat(token){
 						$('.submit-s').fadeIn(1000)
 						$('#loading2-s').fadeOut(1000)
 						limpiarCampos()
+						$('.recap').prop('disabled', true)
+					validado = false	
 					}else{
 						
 						$('.submit-s').fadeIn(1000)
@@ -327,6 +326,8 @@ function validateCapchat(token){
 								$('.invalid-' + key).html(value)
 							});
 					}
+
+					
 				},
 			})
 		}

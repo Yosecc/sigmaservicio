@@ -51,6 +51,8 @@ class ConfigurarController extends Controller
         $meta_name = Comun::where('name', 'meta_name')->update(['content'=>$request->meta_name]);
         $meta_url = Comun::where('name', 'meta_url')->update(['content'=>$request->meta_url]);
         $politica_privacidad = Comun::where('name', 'politica_privacidad')->update(['content'=>$request->politica_privacidad]);
+        $adress1 = Comun::where('name', 'adress1')->update(['content'=>$request->adress1]);
+        $adress2 = Comun::where('name', 'adress2')->update(['content'=>$request->adress2]);
 
         return redirect()->route('configuracion.index');
 
