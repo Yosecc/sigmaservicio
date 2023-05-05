@@ -54,6 +54,22 @@
                     <input type="text" class="form-control" value="@isset ($meta_url) {{ $meta_url }} @endisset" name="meta_url" id="meta_url" placeholder="">
                   </div>
                 </div>
+                <div class="col-12 mt-4">
+                  <div class="form-group">
+                    <label for="meta_url">Adress 1</label>
+                    <div class="form-group bmd-form-group">
+                      <textarea id="adress1" class="form-control" name="adress1" rows="4" required>@isset ($adress1) {{ $adress1 }} @endisset</textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 mt-4">
+                  <div class="form-group">
+                    <label for="meta_url">Adress 2</label>
+                    <div class="form-group bmd-form-group">
+                      <textarea id="adress2" class="form-control" name="adress2" rows="4" required>@isset ($adress2) {{ $adress2 }} @endisset</textarea>
+                    </div>
+                  </div>
+                </div>
                  <div class="col-12 text-center">
                 <input type="submit" class="btn btn-primary" name="" value="Guardar">
               </div>
@@ -68,17 +84,31 @@
 
 <script>
   $(document).ready(function(){
-    CKEDITOR.replace( 'politica_privacidad',{
+    CKEDITOR.replace( 'adress2',{
     uiColor:"#DCDCDC",
-    toolbarGroups : [
-      { name: 'basicstyles', groups: [ 'basicstyles'] },
-      { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
-      { name: 'document',    groups: [ 'doctools' ] },
-      { name: 'editing',     groups: ['spellchecker' ] },
-      { name: 'styles' },
-      { name: 'colors' },
-      { name: 'tools' }
-    ]
+    // toolbarGroups : [
+    //   { name: 'basicstyles', groups: [ 'basicstyles'] },
+    //   { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
+    //   { name: 'document',    groups: [ 'doctools' ] },
+    //   { name: 'editing',     groups: ['spellchecker' ] },
+    //   { name: 'styles' },
+    //   { name: 'colors' },
+    //   { name: 'tools' }
+    // ]
+    // removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
+    });
+
+    CKEDITOR.replace( 'adress1',{
+    uiColor:"#DCDCDC",
+    // toolbarGroups : [
+    //   { name: 'basicstyles', groups: [ 'basicstyles'] },
+    //   { name: 'paragraph',   groups: [ 'list', 'indent', 'align', 'bidi' ] },
+    //   { name: 'document',    groups: [ 'doctools' ] },
+    //   { name: 'editing',     groups: ['spellchecker' ] },
+    //   { name: 'styles' },
+    //   { name: 'colors' },
+    //   { name: 'tools' }
+    // ]
     // removeButtons: 'Cut,Copy,Paste,Undo,Redo,Anchor,Underline,Strike,Subscript,Superscript'
     });
 

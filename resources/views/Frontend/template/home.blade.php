@@ -64,9 +64,11 @@
 	<div class="home_social_container d-flex flex-row justify-content-end align-items-center">
 		<ul class="home_social">
 			{{-- <li><a href="#"><i class="fab fa-pinterest trans_300"></i></a></li> --}}
-			<li><a href="https://www.facebook.com/SIGMA-SA-109147023255336/"><i class="fab fa-facebook-f trans_300"></i></a></li>
-			{{-- <li><a href="#"><i class="fab fa-twitter trans_300"></i></a></li> --}}
-			<li><a href="https://www.instagram.com/sigma_s.a/"><i class="fab fa-instagram trans_300"></i></a></li>
+			@isset ($twitter)<li><a href="{{ $twitter }}"><i class="fab fa-twitter trans_300"></i></a></li>@endisset
+			@isset ($facebook)<li><a href="{{ $facebook }}"><i class="fab fa-facebook-f trans_300"></i></a></li>@endisset
+			{{--  https://www.facebook.com/SIGMA-SA-109147023255336/--}}
+			@isset ($instagram)<li><a href="{{ $instagram }}"><i class="fab fa-instagram trans_300"></i></a></li> @endisset
+			{{-- https://www.instagram.com/sigma_s.a/ --}}
 			{{-- <li><a href="#"><i class="fab fa-dribbble trans_300"></i></a></li> --}}
 			{{-- <li><a href="#"><i class="fab fa-behance trans_300"></i></a></li> --}}
 			{{-- <li><a href="#"><i class="fab fa-linkedin-in trans_300"></i></a></li> --}}
