@@ -85,18 +85,24 @@ class RegisterController extends Controller
         $perfiles = Role::pluck('description','id');
          return view('auth.register',['perfiles'=>$perfiles]);
      }
-    protected function create(Request $request)
-    {        
-      // dd($data);
-            $user = User::create([
+    public function create(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
+            'confpassword' => 'required|same:password',
+            'role_id' => 'required|exists:roles,id',
+        ]);
+
+        $user = User::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => bcrypt($request['password']),
         ]);
-        $user->roles()
-            ->attach(Role::where('id', $request['role_id'])->first());
+        $user->roles()->attach($request['role_id']);
 
-            return redirect()->route("verusuarios");
+        return redirect()->route("verusuarios");
     }
     public function onesearch($id)
     {
@@ -116,6 +122,12 @@ class RegisterController extends Controller
     }
     public function update(Request $request, $id)
     {
+      $request->validate([
+          'name' => 'required|string|max:255',
+          'email' => 'required|string|email|max:255|unique:users,email,'.$id,
+          'role_id' => 'required|exists:roles,id',
+      ]);
+
       $user = DB::table('users')
                 ->where('id', $id)
                 ->first();
@@ -127,9 +139,7 @@ class RegisterController extends Controller
             $user = User::find($id)
                         ->fill($request->input());
             $user->save();
-            $user = DB::table('role_user')
-                      ->where('user_id', $user->id)
-                      ->update(['role_id'=>$request["role_id"]]);
+            $user->roles()->sync([$request["role_id"]]);
           return redirect()->route("verusuarios");
        }
     }

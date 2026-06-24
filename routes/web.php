@@ -23,9 +23,7 @@
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-// Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+// El alta de usuarios se realiza únicamente desde el panel administrativo.
 // Password Reset Routes...
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -39,15 +37,16 @@ Route::post('sugerenciasreclamos','Frontend\homeController@sugerenciasReclamos')
 Route::get('servicio-ajax/{id}', 'Frontend\homeController@servicio_ajax')->name('servicio-ajax');
 Route::post('form_cotizacion','Frontend\homeController@form_cotizacion')->name('form_cotizacion');
 Route::post('validate_recaptcha','Ajax\ValidateRecaptcha@validates')->name('validate_recaptcha');
+Route::get('verificar/{token}', 'Backend\CertificadoController@verificar')
+  ->where('token', '[A-Za-z0-9]{40}')
+  ->name('certificados.verificar');
 
 // Route::post('contact-form','Frontend\HomeController@mensaje')->name('contact-form');
 
 // BACKEND
 App::setLocale("es");
 
-Route::resource('usuarios','Auth\RegisterController');
-
-Route::namespace('Backend')->middleware(['middleware' => 'auth'])->group(function(){
+Route::namespace('Backend')->middleware(['auth', 'role:admin'])->group(function(){
 
   Route::resource('sliders','SliderController');
   Route::resource('noticias','NoticiasController');
@@ -85,7 +84,7 @@ Route::namespace('Backend')->middleware(['middleware' => 'auth'])->group(functio
 
 
 /*Rutas privadas solo para usuarios autenticados*/
-Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function()
 {
   //slider
   Route::name('admin.slider.')->prefix('/slider')->group(function () {
@@ -302,8 +301,6 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
   Route::get('nuevousuario', ['as' => 'formusuario', 'uses'=>'Auth\RegisterController@form']);
   //Eliminar registros de Usuarios
   Route::get('usuarios/r{id}', ['as' => 'eliminarusuario', 'uses'=>'Auth\RegisterController@delete']);
-  // Inicio del Sistema, con login o despues del login el administrador
-  Route::get('/', 'HomeController@index')->name('index');
   //********************** FIN USUARIOS ****************************************
 
   Route::get('modulo/{modulo}',['as' => 'ingresarmodulo', 'uses' => 'Backend\homeController@modulos']);
@@ -315,6 +312,18 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function()
 
 });
 
+Route::get('admin', 'HomeController@index')
+  ->middleware('auth')
+  ->name('index');
+
+Route::prefix('admin')->namespace('Backend')->middleware(['auth', 'role:admin,certificados'])->group(function()
+{
+  Route::get('certificados/importar', 'CertificadoController@importarForm')->name('certificados.importar.form');
+  Route::post('certificados/importar', 'CertificadoController@importar')->name('certificados.importar');
+  Route::get('certificados/plantilla/csv', 'CertificadoController@plantillaCsv')->name('certificados.plantilla');
+  Route::get('certificados/{id}/qr', 'CertificadoController@qr')->name('certificados.qr');
+  Route::resource('certificados', 'CertificadoController');
+});
 
 
 

@@ -12,14 +12,19 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-      $role = new Role();
-      $role->name = 'admin';
-      $role->description = 'Administrator';
-      $role->save();
-      
-      $role = new Role();
-      $role->name = 'user';
-      $role->description = 'User';
-      $role->save();
+      Role::firstOrCreate(
+          ['name' => 'admin'],
+          ['description' => 'Administrator']
+      );
+
+      Role::firstOrCreate(
+          ['name' => 'user'],
+          ['description' => 'User']
+      );
+
+      Role::firstOrCreate(
+          ['name' => 'certificados'],
+          ['description' => 'Administrador de certificados QR']
+      );
     }
 }

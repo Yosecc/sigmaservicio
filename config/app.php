@@ -171,6 +171,7 @@ return [
          */
          Collective\Html\HtmlServiceProvider::class,
          Maatwebsite\Excel\ExcelServiceProvider::class,
+         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -232,6 +233,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Helper' => App\Helpers\Helper::class,
          'Image' => Intervention\Image\Facades\Image::class,
+         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
 

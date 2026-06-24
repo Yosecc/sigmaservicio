@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
      public function index(Request $request)
       {
+          if ($request->user()->hasRole('certificados') && !$request->user()->hasRole('admin')) {
+              return redirect()->route('certificados.index');
+          }
+
           $request->user()->authorizeRoles(['user', 'admin']);
           // return view('home');
           //redirecciona cuando inicia sesión al panel administrativo

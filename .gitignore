@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/htdocs
 /storage/*.key
 /vendor
 /.idea
@@ -17,3 +18,4 @@ package-lock.json
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.ym
+htdocs

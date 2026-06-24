@@ -1,6 +1,16 @@
 <div class="sidebar-wrapper">
   <ul class="nav">
 
+    @if(Auth::user()->hasAnyRole(['admin', 'certificados']))
+    <li id="certificados" class="nav-item">
+      <a class="nav-link" href="{{ route('certificados.index') }}">
+        <i class="material-icons">verified_user</i>
+        <p>Certificados QR</p>
+      </a>
+    </li>
+    @endif
+
+    @if(Auth::user()->hasRole('admin'))
     <li id="slider" class="nav-item">
       <a class="nav-link" href="{{ route('admin.slider.index')}}">
         <i class="material-icons">view_carousel</i>
@@ -72,7 +82,6 @@
       </div>
     </li> --}}
 
-    @if(Auth::user()->hasRole('admin'))
     <li id="configuracion" class="nav-item">
       <a class="nav-link" href="{{ route('verusuarios')}}">
         <i class="fas fa-user"></i>
