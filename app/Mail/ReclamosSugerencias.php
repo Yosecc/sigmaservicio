@@ -22,7 +22,7 @@ class ReclamosSugerencias extends Mailable
     public function __construct($request)
     {
         $this->datos = $request;
-
+  
 
 
     }

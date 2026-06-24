@@ -71,7 +71,7 @@
 				<li><a href="#quienes-somos"><span>¿Quiénes Somos?</span></a></li>
 				<li><a href="#servicios"><span>Servicios</span></a></li>
 
-				<li><a href="" data-toggle="modal" data-target="#modalSugerencias"><span>Reclamos y Sugerencias</span></a></li>
+				<li><a href="" data-toggle="modal" data-target="#modalSugerencias"><span>Quejas y apelaciones</span></a></li>
 		
 				<li><a href="#contacto"><span>Contáctos</span></a></li>
 				{{-- <li><a href="#"><span>contact</span></a></li> --}}
@@ -93,7 +93,7 @@
 			<div class="modal-dialog col-12 col-sm-6" role="document" >
 			<div class="modal-content">
 				<div class="modal-header">
-				<h3 class="modal-title" id="exampleModalLabel">Reclamos y Sugerencias</h3>
+				<h3 class="modal-title" id="exampleModalLabel">Quejas y apelaciones</h3>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -104,36 +104,108 @@
 						{{ csrf_field() }}
 
 						<div class="row " id="cont-form2-s">
+							
 							<div class="form-group col-12">
-								<label for="nombre" >Nombre y apellido</label>
-								<input type="text" class="form-control " name="nombre" id="nombre-sugerencia" placeholder="Ej. Jhon Smit">
-			
-									<div class="invalid-feedback invalid-nombre">
-			
-									</div>
-			
-							</div>
-							<div class="form-group col-12">
-								<label for="telefono" >Teléfono</label>
-								<input type="text" class="form-control " name="telefono" id="telefono-sugerencia" placeholder="Ej. 00055500">
-			
-									<div class="invalid-feedback invalid-telefono">
-			
-									</div>
-			
-							</div>
-							<div class="form-group col-12">
-								<label for="email" >Correo Electrónico</label>
-								<input type="text" class="form-control" name="email" id="email-sugerencia" placeholder="example@mail.com">
-			
-									<div class="invalid-feedback invalid-email">
-			
-									</div>
-			
-							</div>
-							<div class="form-group col-12">
-								<label for="mensaje" >Reclamo o sugerencia</label>
-								<textarea name="mensaje" id="mensaje-sugerencia" class="form-control "></textarea>
+								
+							
+							
+							<div style="text-align: center; padding: 20px; font-family: Arial, sans-serif;">
+                              <h3>¿Tienes una queja, apelación o reclamo?</h3>
+                              <p>En SIGMAC Corp trabajamos para ofrecer servicios de la más alta calidad. Si necesitás comunicar alguna situación relacionada con nuestros servicios, podés hacerlo escribiendo a:</p>
+                              <p><strong><a href="mailto:calidadsigmacorp@gmail.com">calidadsigmacorp@gmail.com</a></strong></p>
+                            
+                            </div>
+							
+							
+							<!-- Button trigger modal -->
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal" style="color:blue; font-size:11px; background:transparent; border:none;">
+                                      También puedes ver los procedimientos para quejas y apelaciones haciendo click aquí. para obtener más información sobre cómo gestionamos estos casos.
+                                    </button>
+                                    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel" "style: font-siza:11px;"><strong>Procedimientos para quejas y apelaciones</strong></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <p>En SIGMAC Corp, brindamos servicios de la más alta calidad para la satisfacción de
+                                                nuestros clientes. Sin embargo, puede suceder que algún aspecto de los servicios no
+                                                sea de la satisfacción total del cliente. En esos casos el cliente puede decidir presentar
+                                                una apelación, queja o reclamo, según sea el caso.</p>
+                                                <br>
+                                                
+                                                <p><strong>Queja:</strong> insatisfacción, malestar o descontento de un cliente o cualquier otra persona,
+                                                en relación con los requisitos del servicio o la gestión del mismo.</p>
+                                                <br>
+                                                
+                                                <p><strong>Reclamo:</strong> Disconformidad generada en el suministro de un servicio o producto y/o la
+                                                gestión de venta que se justifica mediante la presentación de evidencia objetiva con el
+                                                fin de llegar a un acuerdo.</p>
+                                                <br>
+                                                
+                                                <p><strong>Apelación:</strong> Procedimiento mediante el cual se solicita de manera formal a un ente que
+                                                anule, enmiende o corrija los resultados (certificado, informe) o el dictamen de una
+                                                actividad por considerarla injusta.</p>
+                                                <br>
+                                                
+                                                <p><strong>SIGMAC Corp, cuenta con un procedimiento para estos casos:</strong>
+                                                <br>
+                                                Los clientes que deseen o cualquier otra parte interesada que desee presentar una
+                                                queja o reclamo, debe hacerlo de manera objetiva, ya sea de forma verbal o por
+                                                escrito.</p>
+                                                <br>
+                                                
+                                                <p>Una vez que se recibe la información generada por el cliente o cualquier otra parte
+                                                interesada, en relación con un servicio ofrecido en particular, ya sea en el
+                                                cumplimiento de especificaciones, tiempos de entrega o documentación relacionada,
+                                                inmediatamente se hace acuse de recibo al cliente mediante correo electrónico. El
+                                                personal designado de SIGMAC Corp debe utilizar el formulario IZA-RG-07 para
+                                                registrar la solicitud.</p>
+                                                <br>
+                                                
+                                                <p>Se analizan todos los componentes relacionados con la prestación del servicio, y se
+                                                determina si procede o no. La investigación sobre lo planteado en la queja o apelación
+                                                lo hace calidad. Las quejas debe tratarlas la directora de Calidad y las apelaciones debe
+                                                tratarlas la directora de calidad y el gerente general, y determinar si el problema es
+                                                puntual e inmediatamente se toma la acción correctiva, o si se traduce en un reclamo
+                                                con el propósito de investigar la causa raíz, registrándolo en el formulario IZA-RG-05
+                                                para darle tratamiento a la No Conformidad y así generar su acción correctiva
+                                                correspondiente. Informando al cliente del resultado o avances de este proceso en un
+                                                período máximo de una semana. Salvo la queja, el reclamo o apelación por su
+                                                naturaleza requiera de mayor tiempo.</p>
+                                                <br>
+                                                
+                                                <p>En el caso de las apelaciones, las investigaciones se realizan con la gerencia general y
+                                                pueden involucrar la repetición de la inspección o cualquier actividad técnica para
+                                                confirmar el informe de inspección.</p>
+                                                <br>
+                                                
+                                                <p>En el caso de que la apelación fuera procedente, se debe repetir la inspección y volver
+                                                a emitir informes y certificados.</p>
+                                                <br>
+                                                
+                                                <p>Se documentan las acciones tomadas, registrando un resumen de dichas acciones en el
+                                                numeral 2 del registro IZA-RG-07 dejando evidencia de todo el tratamiento dado a la
+                                                queja, reclamo o apelación; dicha información debe ser verificada por la Gerencia
+                                                General. Informando al cliente del resultado o avances de este proceso en un período
+                                                máximo de una semana. Salvo la queja, el reclamo o apelación por su naturaleza
+                                                requiera de mayor tiempo.</p>
+                                                <br>
+                                                
+                                                <p>Se efectúa un seguimiento a las acciones tomadas con el objeto de verificar la
+                                                resolución a la situación y la satisfacción del cliente, dando cierre al proceso.</p>
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
 			
 									<div class="invalid-feedback invalid-mensaje">
 			
@@ -144,10 +216,8 @@
 						</div>
 					</div>
 						<div class="modal-footer d-flex justify-content-between">
-						{{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-						<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
-						<button type="submit"  class="btn btn-primary submit-s recap">Enviar</button>
-						<img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading2-s" style="display: none" alt="">
+					
+					
 					</form>
 				</div>
 		
@@ -183,15 +253,13 @@
 
 		<!-- Footer -->
 
-		<footer class="footer">
+		<footer class="">
 			<div class="container">
-				<div class="row footer_content d-flex flex-sm-row flex-column align-items-center">
-					<div class="col-sm-6 cr text-sm-left text-center">
-						<p>
-							Hecho con <i class="fa fa-heart" aria-hidden="true"></i></a>
-						</p>
+				<div class="row  d-flex flex-sm-row flex-column align-items-center">
+					<div class="col-sm-2 p-3 cr text-sm-left text-center">
+							<img src="{{ asset('frontend/cnalogo.png') }}" class="img-fluid"  alt="">
 					</div>
-					<div class="col-sm-6 text-sm-right text-center">
+					<div class="col-sm-10 text-sm-right text-center">
 						<div class="footer_social_container">
 							<ul class="footer_social">
 								@isset ($twitter)<li><a href="{{ $twitter }}"><i class="fab fa-twitter trans_300"></i></a></li>@endisset

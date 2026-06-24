@@ -72,6 +72,7 @@ class homeController extends Controller{
 
     public function sugerenciasReclamos(Request $request)
     {
+        
 
       $validatedData = $request->validate([
         'nombre' => 'required|max:255',
@@ -82,14 +83,16 @@ class homeController extends Controller{
 
       // dd($request->all());
       //sugerencias@sigmaservicio.com
-      $correo_jefe='sugerencias@sigmaservicio.com';
+      $correo_jefe='calidadsigmacorp@gmail.com';
+     // $correo_jefe='yosec.cervino@gmail.com';
+      
       Mail::to($correo_jefe)->send(new ReclamosSugerencias($request->all()));
 
     }
 
     private function send_email($nombre,$telefono,$email,$servicio){
         //sigmapanamaventas@gmail.com
-        $correo_jefe='ventas@sigmaservicio.com';
+        $correo_jefe='calidadsigmacorp@gmail.com';
         Mail::to($email)->send(new userContacto($nombre,$email,$telefono,$servicio));
         Mail::to($correo_jefe)->send(new jefeContacto($nombre,$email,$telefono,$servicio));
         

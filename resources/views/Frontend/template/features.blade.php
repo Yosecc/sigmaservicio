@@ -6,7 +6,9 @@
 			</div>
 			<div class="col-12">
 				<p>
-					Somos una empresa con más de 10 años de trayectoria,  dedicada al adiestramiento, certificación de personal y equipos , asi como tambien alquiler y venta de equipos de izamiento, equipos para movimiento de tierra y transporte de carga, trabajando en proyectos importantes y con empresas reconocidas, desarrollando las operaciones de forma integrada a políticas de seguridad, medio ambiente, y calidad.
+				    Adiestramiento de personal, inspección y certificación de equipos.
+				    <br>
+					Somos una empresa con profesionales que cuentan con más de 20 años de experiencia, dedicada a la inspección y certificación de equipos de izamiento, adiestramiento y certificación de personal, , trabajando en grandes proyectos y con empresas reconocidas, apoyando al desarrollo de operaciones seguras, de forma integrada a políticas de seguridad, medio ambiente, y calidad.
 				</p>
 			</div>
 		</div>
@@ -23,7 +25,7 @@
 						<img src="{{ asset('frontend/images/icon_1.svg') }}" alt="">
 					</div>
 
-					<p>Contamos con personal con amplia experiencia en lo que respecta a todo lo que a equipos de izamiento respecta.</p>
+					<p>Contamos con personal certificado y con amplia experiencia en inspecciones y certificaciones de equipos de izamiento, accesorios y aparejos.</p>
 				</div>
 			</div>
 			
@@ -34,7 +36,7 @@
 						<img src="{{ asset('frontend/images/icon_2.svg') }}" alt="">
 					</div>
 
-					<p>Nuestro personal  esta certificado y avalado por empresas nacionales e  internacionales como NACB, CICB, Manitowoc,Goldhofer,ABSG Consulting, CATERPILLAR,PDVSA,  CAPAC, entre otras.</p>
+					<p>Nuestra cartera de clientes cuenta con empresas como CHEC, Grupo Caldito, Lucky service, Mateco, SERCONSA, TRANSECA, Equiser, , Megacranes, Acetioxigeno.</p>
 				</div>
 			</div>
 			
@@ -44,7 +46,7 @@
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_3.svg') }}" alt="">
 					</div>
-					<p> Nuestros equipos se encuentran en óptimas condiciones, certificados bajo estándares internacionales, para brindarles un servicio de calidad y una operación segura</p>
+					<p> Nuestros equipos y herramientas de trabajo se encuentran en óptimas condiciones, calibrados y certificados bajo estándares internacionales, para brindarles un servicio con la más alta calidad.</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-sm-6 features_col">
@@ -52,7 +54,7 @@
 					<div class="icon_container d-flex flex-column justify-content-end">
 						<img src="{{ asset('frontend/images/icon_4.svg') }}" alt="">
 					</div>
-					<p> Personal com amplia experiencia en cálculos para izamiento y transporte de cargas pesadas y extradimensionadas.</p>
+					<p>Todas nuestras inspecciones están basadas y se rigen por Normas Internacionales, como ASME, ANSI/ SIA y AWS.</p>
 				</div>
 			</div>
 

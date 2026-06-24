@@ -23,7 +23,7 @@ class AjaxMail extends Controller
     	$mail	 =$request['mail'];
     	$mensaje =$request['mensaje'];
 
-    	Mail::to('info@consuljuridica.com')->send(new Contacto());
+    	Mail::to('')->send(new Contacto());
 
         return 1;
 

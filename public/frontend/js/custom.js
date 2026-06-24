@@ -260,6 +260,10 @@ $(document).ready(function() {
             clientsSlider.owlCarousel({
                 loop: true,
                 dots: false,
+                autoplay: true,
+                autoPlaySpeed: 800,
+                autoPlayTimeout: 800,
+                autoplayHoverPause: true,
                 responsive: {
                     0: { items: 1 },
                     575: { items: 2 },

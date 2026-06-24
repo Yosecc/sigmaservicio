@@ -64,67 +64,15 @@
       <div class="modal-body">
         <img src="{{ asset('frontend/images/check.gif') }}" class="img-fluid gif-check" id="check2" style="display: none" alt="">
       	<form action="" id="contact-form">
-      		{{ csrf_field() }}
-			<div class="row " id="cont-form2">
-				<div class="form-group col-12">
-					<label for="nombre" >Nombre</label>
-					<input type="text" class="form-control " name="nombre" id="nombre-contact" placeholder="Ej. Jhon Smit">
-
-						<div class="invalid-feedback invalid-nombre">
-
-						</div>
-
-				</div>
-				<div class="form-group col-12">
-					<label for="telefono" >Teléfono</label>
-					<input type="text" class="form-control " name="telefono" id="telefono-contact" placeholder="Ej. 00055500">
-
-						<div class="invalid-feedback invalid-telefono">
-
-						</div>
-
-				</div>
-				<div class="form-group col-12">
-					<label for="email" >Correo Electrónico</label>
-					<input type="text" class="form-control" name="email" id="email-contact" placeholder="example@mail.com">
-
-						<div class="invalid-feedback invalid-email">
-
-						</div>
-
-				</div>
-				<div class="form-group col-12">
-					<label for="mensaje" >Mensaje</label>
-					<textarea name="mensaje" id="mensaje-contact" class="form-control "></textarea>
-
-						<div class="invalid-feedback invalid-mensaje">
-
-						</div>
-
-				</div>
-				{{-- <div class="form-group col-12">
-					<label for="servicio" >Servicio</label>
-					<select name="servicio" class="form-control {{ $errors->has('servicio') ? 'is-invalid' : '' }}" >
-						<option value="">Seleccione</option>
-						@foreach ($categorias as $categoria)
-						@foreach ($categoria->servicio as $servicio)
-							<option value="{{ $servicio->id }}">{{ $servicio->nombre }}</option>
-						@endforeach
-					@endforeach
-					</select>
-					@if ($errors->has('servicio'))
-						<div class="invalid-feedback">
-						{{ $errors->first('servicio') }}
-						</div>
-					@endif
-				</div> --}}
-			</div>
+      		<div style="text-align: center; padding: 20px; font-family: Arial, sans-serif;">
+  <h3>¿Deseas ponerte en contacto con nosotros?</h3>
+  <p>En SIGMAC Corp estamos disponibles para atender tus consultas. Ya sea que tengas preguntas, sugerencias o simplemente quieras obtener más información sobre nuestros servicios, puedes escribirnos con toda confianza.</p>
+  <p>📧 <strong><a href="mailto:calidadsigmacorp@gmail.com">calidadsigmacorp@gmail.com</a></strong></p>
+  <p>Tu mensaje será atendido con profesionalismo y prontitud.</p>
+</div>
       </div>
       <div class="modal-footer">
-        {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-		<div class="g-recaptcha" data-callback="validateCapchat" data-sitekey="6Lf7UNYkAAAAAAwTebQ7ZFA6wCweHfp2Yi8J8xWA"></div>
-        <button type="submit" class="btn btn-primary submit-e recap">Enviar</button>
-      <img src="{{ asset('frontend/images/loading.gif') }}" class="img-fluid gif-loading col-3" id="loading2" style="display: none" alt="">
+       
     </form>
       </div>
 
