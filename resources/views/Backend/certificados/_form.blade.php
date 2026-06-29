@@ -40,11 +40,11 @@
 </div>
 
 <div id="campos-persona">
-  <h5 class="mt-3">Datos de la persona</h5>
+  <h5 class="mt-3">Datos del titular de la certificación</h5>
   <div class="row">
     <div class="col-md-5">
       <div class="form-group">
-        <label>Nombre completo de la persona *</label>
+        <label>Titular del certificado *</label>
         <input type="text" name="nombre_titular" class="form-control campo-persona" maxlength="255"
           value="{{ old('nombre_titular', isset($certificado) ? $certificado->nombre_titular : '') }}">
       </div>
@@ -58,7 +58,7 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label>Curso *</label>
+        <label>Certificación *</label>
         <input type="text" name="nombre_certificacion" class="form-control campo-persona" maxlength="255"
           value="{{ old('nombre_certificacion', isset($certificado) ? $certificado->nombre_certificacion : '') }}">
       </div>
@@ -151,14 +151,14 @@
 <div class="row">
   <div class="col-md-3">
     <div class="form-group">
-      <label>Fecha de creación *</label>
+      <label>Fecha de certificación *</label>
       <input type="date" name="fecha_emision" class="form-control" required
         value="{{ old('fecha_emision', isset($certificado) && $certificado->fecha_emision ? $certificado->fecha_emision->format('Y-m-d') : date('Y-m-d')) }}">
     </div>
   </div>
   <div class="col-md-3">
     <div class="form-group">
-      <label>Fecha de vencimiento</label>
+      <label>Vencimiento de la certificación</label>
       <input type="date" name="fecha_vencimiento" class="form-control"
         value="{{ old('fecha_vencimiento', isset($certificado) && $certificado->fecha_vencimiento ? $certificado->fecha_vencimiento->format('Y-m-d') : '') }}">
     </div>

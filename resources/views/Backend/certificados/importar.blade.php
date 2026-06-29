@@ -9,7 +9,7 @@
   <div class="card">
     <div class="card-header card-header-primary">
       <h4 class="card-title">Importar certificados desde CSV</h4>
-      <p class="card-category">Carga masiva de certificados para personas y empresas.</p>
+      <p class="card-category">Carga masiva de certificaciones para titulares, personas y empresas.</p>
     </div>
     <div class="card-body">
       <input id="mostra_vista" value="certificados" hidden disabled>

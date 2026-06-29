@@ -65,7 +65,7 @@
             </div>
             @if($certificado->nombre_titular)
               <div class="col-md-6 data-row">
-                <div class="data-label">Nombre de la persona</div>
+                <div class="data-label">Titular del certificado</div>
                 <div class="data-value">{{ $certificado->nombre_titular }}</div>
               </div>
             @endif
@@ -89,7 +89,7 @@
             @endif
             @if($certificado->nombre_certificacion)
               <div class="col-md-12 data-row">
-                <div class="data-label">Curso</div>
+                <div class="data-label">Certificación</div>
                 <div class="data-value">{{ $certificado->nombre_certificacion }}</div>
               </div>
             @endif
@@ -148,11 +148,11 @@
               </div>
             @endif
             <div class="col-md-3 data-row">
-              <div class="data-label">Fecha de creación</div>
+              <div class="data-label">Fecha de certificación</div>
               <div class="data-value">{{ $certificado->fecha_emision->format('d/m/Y') }}</div>
             </div>
             <div class="col-md-3 data-row">
-              <div class="data-label">Vencimiento</div>
+              <div class="data-label">Vencimiento de la certificación</div>
               <div class="data-value">{{ $certificado->fecha_vencimiento ? $certificado->fecha_vencimiento->format('d/m/Y') : 'No aplica' }}</div>
             </div>
           </div>

@@ -80,11 +80,11 @@ class CertificadoController extends Controller
             [
                 'tipo_certificado' => 'persona',
                 'numero_certificado' => 'PER-2026-001',
-                'nombre_persona' => 'María González',
+                'titular_certificado' => 'María González',
                 'documento_identidad' => 'V-12345678',
                 'nombre_cliente' => '',
                 'nombre_empresa' => 'Empresa Ejemplo, C.A.',
-                'curso' => 'Operación segura de equipos de izamiento',
+                'certificacion' => 'Operación segura de equipos de izamiento',
                 'domicilio' => '',
                 'equipo_tipo' => '',
                 'equipo_marca' => '',
@@ -94,19 +94,19 @@ class CertificadoController extends Controller
                 'capacidad_certificada' => '',
                 'normas_aplicadas' => '',
                 'lugar_inspeccion' => '',
-                'fecha_creacion' => '2026-06-24',
-                'fecha_vencimiento' => '2027-06-24',
+                'fecha_certificacion' => '2026-06-24',
+                'vencimiento_certificacion' => '2027-06-24',
                 'estado' => 'vigente',
                 'observaciones' => 'Ejemplo de certificado para persona',
             ],
             [
                 'tipo_certificado' => 'empresa',
                 'numero_certificado' => 'EMP-2026-001',
-                'nombre_persona' => '',
+                'titular_certificado' => '',
                 'documento_identidad' => '',
                 'nombre_cliente' => 'Cliente Industrial',
                 'nombre_empresa' => 'Empresa Ejemplo, C.A.',
-                'curso' => '',
+                'certificacion' => '',
                 'domicilio' => 'Av. Principal, Zona Industrial',
                 'equipo_tipo' => 'Grúa móvil',
                 'equipo_marca' => 'Liebherr',
@@ -116,8 +116,8 @@ class CertificadoController extends Controller
                 'capacidad_certificada' => '100 toneladas',
                 'normas_aplicadas' => 'ASME B30.5',
                 'lugar_inspeccion' => 'Planta principal',
-                'fecha_creacion' => '2026-06-24',
-                'fecha_vencimiento' => '2027-06-24',
+                'fecha_certificacion' => '2026-06-24',
+                'vencimiento_certificacion' => '2027-06-24',
                 'estado' => 'vigente',
                 'observaciones' => 'Ejemplo de certificado para empresa o equipo',
             ],
@@ -170,13 +170,16 @@ class CertificadoController extends Controller
 
         $encabezados[0] = preg_replace('/^\xEF\xBB\xBF/', '', $encabezados[0]);
         $esperados = $this->columnasCsv();
+        $esperadosLegacy = $this->columnasCsvLegacy();
 
-        if ($encabezados !== $esperados) {
+        if ($encabezados !== $esperados && $encabezados !== $esperadosLegacy) {
             fclose($archivo);
             return back()->withErrors([
                 'archivo_csv' => 'La estructura del archivo no coincide con la plantilla. Descargue y utilice la plantilla oficial.',
             ]);
         }
+
+        $columnasArchivo = $encabezados;
 
         $registros = [];
         $errores = [];
@@ -190,17 +193,18 @@ class CertificadoController extends Controller
                 continue;
             }
 
-            $fila = array_pad($fila, count($esperados), '');
-            $datos = array_combine($esperados, array_slice($fila, 0, count($esperados)));
+            $fila = array_pad($fila, count($columnasArchivo), '');
+            $datos = array_combine($columnasArchivo, array_slice($fila, 0, count($columnasArchivo)));
             $datos = array_map(function ($valor) {
                 $valor = trim($valor);
                 return $valor === '' ? null : $valor;
             }, $datos);
 
-            $datos['nombre_titular'] = $datos['nombre_persona'];
-            $datos['nombre_certificacion'] = $datos['curso'];
-            $datos['fecha_emision'] = $datos['fecha_creacion'];
-            unset($datos['nombre_persona'], $datos['curso'], $datos['fecha_creacion']);
+            $datos['nombre_titular'] = $datos['titular_certificado'] ?? $datos['nombre_persona'] ?? null;
+            $datos['nombre_certificacion'] = $datos['certificacion'] ?? $datos['curso'] ?? null;
+            $datos['fecha_emision'] = $datos['fecha_certificacion'] ?? $datos['fecha_creacion'] ?? null;
+            $datos['fecha_vencimiento'] = $datos['vencimiento_certificacion'] ?? $datos['fecha_vencimiento'] ?? null;
+            unset($datos['titular_certificado'], $datos['nombre_persona'], $datos['certificacion'], $datos['curso'], $datos['fecha_certificacion'], $datos['fecha_creacion'], $datos['vencimiento_certificacion']);
 
             $datos['tipo_certificado'] = strtolower((string) $datos['tipo_certificado']);
             $datos['estado'] = strtolower((string) ($datos['estado'] ?: 'vigente'));
@@ -405,6 +409,32 @@ class CertificadoController extends Controller
     }
 
     private function columnasCsv()
+    {
+        return [
+            'tipo_certificado',
+            'numero_certificado',
+            'titular_certificado',
+            'documento_identidad',
+            'nombre_cliente',
+            'nombre_empresa',
+            'certificacion',
+            'domicilio',
+            'equipo_tipo',
+            'equipo_marca',
+            'equipo_modelo',
+            'equipo_serial',
+            'codigo_interno',
+            'capacidad_certificada',
+            'normas_aplicadas',
+            'lugar_inspeccion',
+            'fecha_certificacion',
+            'vencimiento_certificacion',
+            'estado',
+            'observaciones',
+        ];
+    }
+
+    private function columnasCsvLegacy()
     {
         return [
             'tipo_certificado',

@@ -25,7 +25,7 @@
             <tr><th>Número</th><td>{{ $certificado->numero_certificado }}</td></tr>
             <tr><th>Tipo</th><td>{{ $certificado->tipo_texto }}</td></tr>
             @if($certificado->nombre_titular)
-              <tr><th>Nombre de la persona</th><td>{{ $certificado->nombre_titular }}</td></tr>
+              <tr><th>Titular del certificado</th><td>{{ $certificado->nombre_titular }}</td></tr>
             @endif
             @if($certificado->documento_identidad)
               <tr><th>Documento de identidad</th><td>{{ $certificado->documento_identidad }}</td></tr>
@@ -37,7 +37,7 @@
               <tr><th>Nombre de la empresa</th><td>{{ $certificado->nombre_empresa }}</td></tr>
             @endif
             @if($certificado->nombre_certificacion)
-              <tr><th>Curso</th><td>{{ $certificado->nombre_certificacion }}</td></tr>
+              <tr><th>Certificación</th><td>{{ $certificado->nombre_certificacion }}</td></tr>
             @endif
             @if($certificado->domicilio)
               <tr><th>Domicilio</th><td>{{ $certificado->domicilio }}</td></tr>
@@ -66,9 +66,9 @@
             @if($certificado->lugar_inspeccion)
               <tr><th>Lugar de inspección</th><td>{{ $certificado->lugar_inspeccion }}</td></tr>
             @endif
-            <tr><th>Fecha de creación</th><td>{{ $certificado->fecha_emision->format('d/m/Y') }}</td></tr>
+            <tr><th>Fecha de certificación</th><td>{{ $certificado->fecha_emision->format('d/m/Y') }}</td></tr>
             <tr>
-              <th>Fecha de vencimiento</th>
+              <th>Vencimiento de la certificación</th>
               <td>{{ $certificado->fecha_vencimiento ? $certificado->fecha_vencimiento->format('d/m/Y') : 'No aplica' }}</td>
             </tr>
             <tr>

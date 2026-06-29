@@ -26,7 +26,7 @@
           <label>Buscar</label>
           <input type="text" name="q" class="form-control"
             value="{{ request('q') }}"
-            placeholder="Número, titular, documento o certificación">
+            placeholder="Número, titular del certificado, documento o certificación">
         </div>
         <div class="col-md-2">
           <label>Estado</label>
@@ -38,11 +38,11 @@
           </select>
         </div>
         <div class="col-md-2">
-          <label>Emitido desde</label>
+          <label>Certificación desde</label>
           <input type="date" name="desde" class="form-control" value="{{ request('desde') }}">
         </div>
         <div class="col-md-2">
-          <label>Emitido hasta</label>
+          <label>Certificación hasta</label>
           <input type="date" name="hasta" class="form-control" value="{{ request('hasta') }}">
         </div>
         <div class="col-md-2 d-flex align-items-end">
@@ -61,9 +61,9 @@
             <tr>
               <th>Número</th>
               <th>Tipo</th>
-              <th>Persona / cliente</th>
+              <th>Titular / cliente</th>
               <th>Empresa / detalle</th>
-              <th>Emisión</th>
+              <th>Fecha de certificación</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
