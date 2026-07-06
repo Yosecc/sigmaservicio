@@ -75,7 +75,8 @@
                 <div class="data-value">{{ $certificado->documento_identidad }}</div>
               </div>
             @endif
-            @if($certificado->nombre_cliente)
+            {{-- Oculto en la verificación pública para certificados de tipo empresa. Conservar para una posible reactivación. --}}
+            @if($certificado->tipo_certificado !== 'empresa' && $certificado->nombre_cliente)
               <div class="col-md-6 data-row">
                 <div class="data-label">Nombre del cliente</div>
                 <div class="data-value">{{ $certificado->nombre_cliente }}</div>
@@ -93,7 +94,8 @@
                 <div class="data-value">{{ $certificado->nombre_certificacion }}</div>
               </div>
             @endif
-            @if($certificado->domicilio)
+            {{-- Oculto en la verificación pública para certificados de tipo empresa. Conservar para una posible reactivación. --}}
+            @if($certificado->tipo_certificado !== 'empresa' && $certificado->domicilio)
               <div class="col-md-12 data-row">
                 <div class="data-label">Domicilio</div>
                 <div class="data-value">{{ $certificado->domicilio }}</div>
@@ -101,7 +103,7 @@
             @endif
             @if($certificado->equipo_tipo)
               <div class="col-md-6 data-row">
-                <div class="data-label">Tipo de equipo</div>
+                <div class="data-label">Equipo</div>
                 <div class="data-value">{{ $certificado->equipo_tipo }}</div>
               </div>
             @endif
@@ -111,7 +113,8 @@
                 <div class="data-value">{{ $certificado->equipo_marca }}</div>
               </div>
             @endif
-            @if($certificado->equipo_modelo)
+            {{-- Oculto en la verificación pública para certificados de tipo empresa. Conservar para una posible reactivación. --}}
+            @if($certificado->tipo_certificado !== 'empresa' && $certificado->equipo_modelo)
               <div class="col-md-6 data-row">
                 <div class="data-label">Modelo</div>
                 <div class="data-value">{{ $certificado->equipo_modelo }}</div>
@@ -135,13 +138,15 @@
                 <div class="data-value">{{ $certificado->capacidad_certificada }}</div>
               </div>
             @endif
-            @if($certificado->normas_aplicadas)
+            {{-- Oculto en la verificación pública para certificados de tipo empresa. Conservar para una posible reactivación. --}}
+            @if($certificado->tipo_certificado !== 'empresa' && $certificado->normas_aplicadas)
               <div class="col-md-12 data-row">
                 <div class="data-label">Normas aplicadas</div>
                 <div class="data-value">{{ $certificado->normas_aplicadas }}</div>
               </div>
             @endif
-            @if($certificado->lugar_inspeccion)
+            {{-- Oculto en la verificación pública para certificados de tipo empresa. Conservar para una posible reactivación. --}}
+            @if($certificado->tipo_certificado !== 'empresa' && $certificado->lugar_inspeccion)
               <div class="col-md-12 data-row">
                 <div class="data-label">Lugar de inspección</div>
                 <div class="data-value">{{ $certificado->lugar_inspeccion }}</div>
