@@ -68,6 +68,7 @@
 
 <div id="campos-empresa">
   <h5 class="mt-3">Datos del cliente y del equipo</h5>
+  {{-- Campos ocultos para certificados tipo empresa. Conservar para una posible reactivación.
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
@@ -84,6 +85,7 @@
       </div>
     </div>
   </div>
+  --}}
 
   <div class="row">
     <div class="col-md-3">
@@ -100,6 +102,7 @@
           value="{{ old('equipo_marca', isset($certificado) ? $certificado->equipo_marca : '') }}">
       </div>
     </div>
+    {{-- Campo oculto para certificados tipo empresa. Conservar para una posible reactivación.
     <div class="col-md-3">
       <div class="form-group">
         <label>Modelo</label>
@@ -107,6 +110,7 @@
           value="{{ old('equipo_modelo', isset($certificado) ? $certificado->equipo_modelo : '') }}">
       </div>
     </div>
+    --}}
     <div class="col-md-3">
       <div class="form-group">
         <label>Serial</label>
@@ -131,6 +135,7 @@
           value="{{ old('capacidad_certificada', isset($certificado) ? $certificado->capacidad_certificada : '') }}">
       </div>
     </div>
+    {{-- Campos ocultos para certificados tipo empresa. Conservar para una posible reactivación.
     <div class="col-md-3">
       <div class="form-group">
         <label>Lugar de inspección</label>
@@ -144,6 +149,7 @@
         <textarea name="normas_aplicadas" class="form-control" rows="2" maxlength="2000">{{ old('normas_aplicadas', isset($certificado) ? $certificado->normas_aplicadas : '') }}</textarea>
       </div>
     </div>
+    --}}
   </div>
 </div>
 

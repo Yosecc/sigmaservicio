@@ -347,7 +347,7 @@ class CertificadoController extends Controller
             'nombre_titular' => 'required_if:tipo_certificado,persona|nullable|string|max:255',
             'documento_identidad' => 'nullable|string|max:100',
             'nombre_certificacion' => 'required_if:tipo_certificado,persona|nullable|string|max:255',
-            'nombre_cliente' => 'required_if:tipo_certificado,empresa|nullable|string|max:255',
+            'nombre_cliente' => 'nullable|string|max:255',
             'nombre_empresa' => 'required|string|max:255',
             'domicilio' => 'nullable|string|max:1000',
             'equipo_tipo' => 'nullable|string|max:255',
